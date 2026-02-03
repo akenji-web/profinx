@@ -1,0 +1,100 @@
+@use "global" as *;
+
+.contact {
+  padding-top: rem(50);
+  padding-bottom: rem(130);
+  background-image: url(../images/contact-bg.webp);
+  background-size: cover;
+  background-position: center right;
+  background-repeat: no-repeat;
+
+  @include mq("md") {
+    padding-top: rem(60);
+    padding-bottom: rem(60);
+  }
+}
+
+.contact__inner {
+  position: relative;
+  padding-left: rem(250);
+  padding-right: rem(250);
+
+  @include mq("md") {
+    padding-left: rem(20);
+    padding-right: rem(20);
+  }
+}
+
+.contact__container {
+  margin-top: rem(-120);
+  background-color: $white;
+  box-shadow: rem(2) rem(4) rem(45) 0 rgba(52, 57, 68, 0.13);
+  padding: rem(60);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: rem(60);
+  width: 100%;
+  max-width: rem(940);
+  margin-left: auto;
+  margin-right: auto;
+
+  @include mq("md") {
+    padding: rem(40) rem(20);
+    margin-top: rem(-50);
+    gap: rem(40);
+  }
+}
+
+.contact__content {
+  max-width: rem(687);
+  width: 100%;
+}
+
+.contact__text {
+  color: $black;
+  font-family: $base-font-family;
+  font-weight: $normal;
+  font-size: rem(16);
+  line-height: 1.8;
+  text-align: center;
+}
+
+.contact__button-area{
+  margin-top: rem(30);
+  display: flex;
+  gap: rem(30);
+  align-items: center;
+  justify-content: center;
+
+  @include mq("md") {
+    flex-direction: column;
+    width: 100%;
+    gap: rem(20);
+  }
+}
+
+.contact__button {
+}
+
+.contact__button-tel {
+  background-color: $white;
+  border: 1px solid $yellow;
+  padding: rem(15) rem(45);
+  width: 100%;
+  max-width: rem(280);
+  color: $dark-yellow;
+  font-size: rem(20);
+  font-family: $base-font-family;
+  font-weight: $medium;
+  line-height: 1.6;
+  text-align: center;
+  transition: opacity 0.3s;
+}
+
+@media (any-hover: hover) {
+  .contact__button-tel:hover {
+    opacity: 0.8;
+  }
+}
+

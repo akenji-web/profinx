@@ -1,0 +1,58 @@
+@use "global" as *;
+
+.heading {
+  text-align: center;
+  position: relative;
+  padding-bottom: rem(10);
+}
+
+.heading::before {
+  content: "";
+  position: absolute;
+  background-image: url(../images/heading-line.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  aspect-ratio: 120 / 1;
+  width: 100%;
+  max-width: rem(121);
+  height: auto;
+}
+
+.heading__title {
+  color: $blue;
+  font-size: rem(50);
+  font-family: "EB Garamond", serif;
+  font-weight: $medium;
+  line-height: 1.5;
+  letter-spacing: rem(2.5);
+  text-transform: capitalize;
+}
+
+.heading__subtitle {
+  color: $black;
+  font-size: rem(16);
+  font-family: $second-font-family;
+  font-weight: $medium;
+  line-height: 1.5;
+}
+
+.heading.heading--left {
+  text-align: left;
+}
+
+.heading.heading--left::before {
+  left: 0;
+  transform: translateX(0);
+}
+
+.heading.heading--contact {
+  padding-bottom: 0;
+}
+
+.heading.heading--contact::before {
+  display: none;
+}

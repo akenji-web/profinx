@@ -1,0 +1,44 @@
+@use "global" as *;
+
+
+.button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: rem(15) 0;
+  width: 100%;
+  max-width: rem(244);
+  border: 1px solid $blue;
+  color: $blue;
+  font-size: rem(16);
+  font-family: $base-font-family;
+  font-weight: $medium;
+  transition: opacity 0.3s;
+}
+
+.button__arrow {
+  position: absolute;
+  background-image: url(../images/button-arrow.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center right;
+  right: rem(-20);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  max-width: rem(40);
+  aspect-ratio: 40 / 4;
+  height: auto;
+  transition: right 0.3s;
+}
+
+@media (any-hover: hover) {
+  .button:hover {
+    opacity: 0.7;
+  }
+
+  .button:hover .button__arrow {
+    right: rem(-35);
+  }
+}

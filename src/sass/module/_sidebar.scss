@@ -1,0 +1,16 @@
+@use "global" as *;
+
+.sidebar {
+  width: 100%;
+  max-width: rem(300);
+  flex-shrink: 0;
+
+  @include mq("md") {
+    max-width: 100%;
+  }
+}
+
+.sidebar__section {
+  background-color: $white;
+}
+

@@ -1,0 +1,60 @@
+@use "global" as *;
+
+.mv {
+  position: relative;
+  width: 100%;
+  height: rem(695);
+  overflow: hidden;
+
+  @include mq("xl") {
+    margin-top: rem(105);
+    height: calc(100vh - rem(105));
+  }
+
+  @include mq("md") {
+    height: rem(500);
+  }
+}
+
+.mv__image img {
+  width: 100%;
+  aspect-ratio: 1440 / 695;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+
+  @include mq("xl") {
+    height: calc(100vh - rem(105));
+  }
+}
+
+.mv__inner {
+}
+
+.mv__text-area {
+  position: absolute;
+  top: 50%;
+  left: rem(120);
+  transform: translateY(-50%);
+}
+
+.mv__text {
+  color: $white;
+  font-family: $second-font-family;
+  font-weight: $bold;
+  font-size: rem(56);
+  line-height: 1.5;
+  letter-spacing: rem(2.8);
+  text-shadow: rem(2) rem(4) rem(35) rgba(64, 69, 83, 0.18);
+
+  @include mq("md") {
+    font-size: rem(32);
+    letter-spacing: rem(1.6);
+  }
+}
+
+.mv__text-small {
+  font-size: rem(48);
+  letter-spacing: rem(2.4);
+}
+

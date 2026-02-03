@@ -1,0 +1,53 @@
+@use "global" as *;
+
+.case-study {
+  padding-top: rem(130);
+  padding-bottom: rem(130);
+
+  @include mq("md") {
+    padding-top: rem(60);
+    padding-bottom: rem(60);
+  }
+}
+
+.case-study__inner {
+}
+
+.case-study__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: rem(60);
+
+  @include mq("md") {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: rem(40);
+  }
+}
+
+.case-study__button {
+  width: rem(244);
+  flex-shrink: 0;
+}
+
+.case-study__list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: rem(20);
+  margin-top: rem(60);
+
+  @include mq("md") {
+    flex-direction: column;
+    gap: rem(20);
+    margin-top: rem(40);
+  }
+}
+
+.case-study__item {
+  width: rem(280);
+
+  @include mq("md") {
+    width: 100%;
+  }
+}
