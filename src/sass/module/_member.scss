@@ -1,0 +1,146 @@
+@use "global" as *;
+
+.member {
+  background-color: $white;
+  padding: rem(130) 0;
+
+  @include mq("md") {
+    padding: rem(60) 0;
+  }
+}
+
+.member__heading {
+}
+
+.member__container {
+  margin-top: rem(60);
+}
+
+.member__slide {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: clamp(#{rem(8)}, 1.5vw, #{rem(16)});
+  width: 100%;
+  max-width: rem(1080);
+  margin-inline: auto;
+
+  @include mq("md") {
+    display: block;
+    max-width: none;
+  }
+}
+
+.member__swiper {
+  grid-column: 2;
+  grid-row: 1;
+  min-width: 0;
+  width: 100%;
+  padding-bottom: rem(8);
+
+  @include mq("md") {
+    grid-column: auto;
+    grid-row: auto;
+  }
+}
+
+.member__swiper-wrapper {
+  align-items: stretch;
+}
+
+.member__swiper-slide {
+  height: auto;
+}
+
+.member__card {
+  height: 100%;
+}
+
+.member__prev,
+.member__next {
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+  height: clamp(#{rem(36)}, 3.2vw, #{rem(50)});
+  width: clamp(#{rem(36)}, 3.2vw, #{rem(50)});
+  margin-top: 0;
+  left: auto;
+  right: auto;
+  top: auto;
+
+  @include mq("md") {
+    position: absolute;
+    height: rem(50);
+    width: rem(50);
+    top: rem(120);
+  }
+}
+
+.member__prev {
+  grid-column: 1;
+  grid-row: 1;
+
+  @include mq("md") {
+    grid-column: auto;
+    grid-row: auto;
+    left: rem(8);
+    right: auto;
+  }
+}
+
+.member__next {
+  grid-column: 3;
+  grid-row: 1;
+
+  @include mq("md") {
+    grid-column: auto;
+    grid-row: auto;
+    right: rem(8);
+    left: auto;
+  }
+}
+
+@media (any-hover: hover) {
+  .member__prev:hover,
+  .member__next:hover {
+    opacity: 0.7;
+    transition: opacity 0.3s;
+  }
+}
+
+/* 前への矢印カスタマイズ */
+.member__prev::after {
+  background-image: url(../images/prev-icon.svg);
+}
+/* 次への矢印カスタマイズ */
+.member__next::after {
+  background-image: url(../images/next-icon.svg);
+}
+
+.member__prev::after,
+.member__next::after {
+  background-repeat: no-repeat;
+  background-size: contain;
+  content: "";
+  display: block;
+  height: 100%;
+  margin: auto;
+  max-height: rem(50);
+  max-width: rem(50);
+  width: 100%;
+}
+
+
+.member__empty {
+  color: $black;
+  font-size: rem(16);
+  margin-bottom: rem(40);
+  text-align: center;
+}
+
+.member__button {
+  margin-top: rem(60);
+  display: flex;
+  justify-content: center;
+}

@@ -65,14 +65,58 @@ jQuery(function ($) { // この中であればWordpressでも「$」が使用可
     return false;
   });
 
-  let swiper = new Swiper(".js-works-swiper", {
-    pagination: {
-      el: ".js-works-pagination",
-    },
-    loop: true,
-    clickable: true,
-    // autoplay: {
-    //   delay: 3000,
-    // },
-  });
+  // メンバースライダー
+  if (document.querySelector(".js-member-swiper")) {
+    new Swiper(".js-member-swiper", {
+      loop: true, //繰り返しをする
+      loopedSlides: 3,
+      slidesPerView: 1,
+      spaceBetween: 24,
+      speed: 1000,
+      effect: "slide",
+      autoplay: {
+        delay: 3000,
+        waitForTransition: false
+      },
+      navigation: {
+        prevEl: ".swiper-button-prev",
+        nextEl: ".swiper-button-next",
+      },
+      breakpoints: {
+        // when window width is >= 768px
+        769: {
+          slidesPerView: 3,
+          spaceBetween: 16,
+        },
+        // when window width is >= 768px
+        1025: {
+          slidesPerView: 3,
+          spaceBetween: 36,
+        },
+      },
+    });
+  }
+
+  // 企業ロゴスライダー（実績紹介アーカイブ）
+  if (document.querySelector(".js-company-logo-swiper")) {
+    new Swiper(".js-company-logo-swiper", {
+      loop: true, // ループ有効
+      slidesPerView: 4, // スライダーの表示枚数
+      spaceBetween: 0, // スライダーの間隔
+      speed: 3000, // スライダーの速度
+      allowTouchMove: false, // スワイプ無効
+      autoplay: {
+        delay: 0, // 途切れなくループ
+        disableOnInteraction: false,
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 6,
+        },
+        1440: {
+          slidesPerView: 8,
+        }
+      },
+    });
+  }
 });

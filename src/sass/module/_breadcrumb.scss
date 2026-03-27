@@ -1,18 +1,19 @@
 @use "global" as *;
 
 .breadcrumb {
-  background-color: $bg-gray;
+  position: absolute;
+  top: rem(30);
+  left: rem(50);
 }
 
 .breadcrumb__inner {
 }
 
 .breadcrumb__list {
-  padding-top: rem(10);
-  color: $black;
+  color: $white;
   font-family: $base-font-family;
-  font-size: rem(14);
+  font-size: rem(12);
   font-style: normal;
-  font-weight: $regular;
+  font-weight: $medium;
   line-height: normal;
 }

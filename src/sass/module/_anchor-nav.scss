@@ -1,0 +1,80 @@
+@use "global" as *;
+
+
+.anchor-nav {
+  background-color: $white;
+  box-shadow: rem(2) rem(4) rem(45) 0 rgba(52, 57, 68, 0.13);
+  padding: rem(30) rem(60);
+  width: fit-content;
+  margin-inline: auto;
+}
+
+.anchor-nav__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: rem(10) rem(30);
+  justify-content: center;
+}
+
+.anchor-nav__item {
+}
+
+.anchor-nav__link {
+  position: relative;
+  border: 1px solid $blue;
+  display: block;
+  color: $blue;
+  font-size: rem(16);
+  font-family: $base-font-family;
+  font-weight: $medium;
+  line-height: 1.5;
+  padding: rem(10) rem(52) rem(10) rem(35);
+  transition: opacity 0.3s;
+}
+
+@media (any-hover: hover) {
+  .anchor-nav__link:hover {
+    opacity: 0.7;
+  }
+}
+
+.anchor-nav__link::after {
+  position: absolute;
+  content: '';
+  right: rem(20);
+  top: 50%;
+  transform: translateY(-50%);
+  background-image: url(../images/anchor-nav-icon.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: rem(7);
+  width: 100%;
+  max-width: rem(12);
+}
+
+@media (any-hover: hover) {
+  .anchor-nav__link:hover {
+    opacity: 0.7;
+  }
+}
+
+.anchor-nav-profile {
+  overflow: hidden;
+  padding: rem(130) 0 rem(270);
+
+  @include mq("md") {
+    padding: rem(60) 0 rem(80);
+  }
+}
+
+.anchor-nav-profile__inner {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  position: relative;
+
+  @include mq("md") {
+    flex-direction: column;
+  }
+}

@@ -58,3 +58,8 @@
   letter-spacing: rem(2.4);
 }
 
+// 1文字ずつ表示アニメーション用（JSで挿入）
+.mv__char {
+  display: inline-block;
+}
+

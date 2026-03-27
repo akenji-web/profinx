@@ -12,10 +12,9 @@
 <body>
 	<header class="header js-header">
     <div class="header__inner">
-      <a href="/" class="header__logo">
+      <a href="<?php echo esc_url(home_url('/')); ?>" class="header__logo">
         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.webp" alt="ProFinX">
       </a>
-
       <nav class="header__nav u-desktop" aria-label="グローバルナビゲーション">
         <ul class="header__nav-list">
           <li class="header__nav-item">

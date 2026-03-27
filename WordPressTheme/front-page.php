@@ -8,8 +8,8 @@
         <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/mv_pc.webp")); ?>" alt="">
       </picture>
       <div class="mv__text-area">
-        <p class="mv__text">ProFinX Co.は</p>
-        <p class="mv__text">企業価値向上<span class="mv__text-small">を</span>支<span class="mv__text-small">える</span><br>
+        <p class="mv__text">ProFinX Co.は<br>
+        企業価値向上<span class="mv__text-small">を</span>支<span class="mv__text-small">える</span><br>
         経営参謀<span class="mv__text-small">です。</span></p>
       </div>
     </div>
@@ -22,12 +22,13 @@
         <div class="about__contents">
           <h2 class="about__heading">ProFinX Co.とは</h2>
           <div class="about__text-area">
-            <p class="about__text">私たちの会社名は、<br>
+            <!-- <p class="about__text">私たちの会社名は、<br>
             Pro（前へ進める/プロフェッショナル）<br>
             ＋Fin（金融/財務企画）<br>
             ＋X（トランスフォーメーション/変革）を組み合わせた造語です。</p>
             <p class="about__text">そこに込めた想いと企業理念は、 「高度な専門性を備えた経営人材チームの提供」と「データ経営の導入支援」を通じて、CFOと経営企画機能を強化し、日本企業の企業価値向上に貢献すること。</p>
-            <p class="about__text">これを推進する私たちのチームは、公認会計士、外資系証券アナリスト、上場企業の経営企画担当、サステナビリティ経営の実務担当など多様なバックグランドを備えており、CXOレベルでの目線で、クライアント企業の「変革」に高い熱量でコミットします。</p>
+            <p class="about__text">これを推進する私たちのチームは、公認会計士、外資系証券アナリスト、上場企業の経営企画担当、サステナビリティ経営の実務担当など多様なバックグランドを備えており、CXOレベルでの目線で、クライアント企業の「変革」に高い熱量でコミットします。</p> -->
+            <p class="about__text"><?php echo nl2br(get_field('about_text')); ?></p>
           </div>
           <div class="about__button">
             <a href="<?php echo esc_url(home_url('/company')); ?>" class="button">会社概要<span class="button__arrow"></span></a>
@@ -53,7 +54,7 @@
         </figure>
         <div class="value-proposition__contents">
           <ul class="value-proposition__list">
-            <li class="value-proposition__item">
+            <!-- <li class="value-proposition__item">
               <div class="value-proposition__item-header">
                 <span class="value-proposition__number">01</span>
                 <h3 class="value-proposition__item-title">経営者視点の提案力</h3>
@@ -78,9 +79,29 @@
                 社内に点在・潜在するデータを収集・統合し、高速かつ高度なデータ分析により、経営課題の把握と解決に向けたインサイト（示唆）を導出します。<br>
                 インサイトを“使いこなす”ため、データ基盤、ダッシュボード、管理帳票の策定と運用までワンストップで支援します。
               </p>
+            </li> -->
+            <li class="value-proposition__item">
+              <div class="value-proposition__item-header">
+                <span class="value-proposition__number">01</span>
+                <h3 class="value-proposition__item-title"><?php echo get_field('value-proposition1_title'); ?></h3>
+              </div>
+              <p class="value-proposition__item-text"><?php echo nl2br(get_field('value-proposition1_text')); ?></p>
+            </li>
+            <li class="value-proposition__item">
+              <div class="value-proposition__item-header">
+                <span class="value-proposition__number">02</span>
+                <h3 class="value-proposition__item-title"><?php echo get_field('value-proposition2_title'); ?></h3>
+              </div>
+              <p class="value-proposition__item-text"><?php echo nl2br(get_field('value-proposition2_text')); ?></p>
+            </li>
+            <li class="value-proposition__item">
+              <div class="value-proposition__item-header">
+                <span class="value-proposition__number">03</span>
+                <h3 class="value-proposition__item-title"><?php echo get_field('value-proposition3_title'); ?></h3>
+              </div>
+              <p class="value-proposition__item-text"><?php echo nl2br(get_field('value-proposition3_text')); ?></p>
             </li>
           </ul>
-          
         </div>
       </div>
     </div>
@@ -213,7 +234,7 @@
           <p class="case-card__title"><?php the_title(); ?></p>
           <p class="case-card__description"><?php echo esc_html(get_field('description') ?: '〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇'); ?></p>
           <div class="case-card__bottom">
-            <time class="case-card__date" datetime="<?php echo get_the_date('c'); ?>"><?php echo get_the_date('Y.m.d'); ?></time>
+            <div class="case-card__categories">
             <?php
             $taxonomy_terms = get_the_terms($post->ID, 'case-study-category');
             if (!empty($taxonomy_terms)) {
@@ -222,6 +243,7 @@
               }
             }
             ?>
+            </div>
           </div>
         </li>
         <?php
@@ -258,7 +280,17 @@
             while ($news_query->have_posts()) : $news_query->the_post();
           ?>
           <a href="<?php the_permalink(); ?>" class="news__item">
-            <time class="news__date" datetime="<?php echo get_the_date('c'); ?>"><?php echo get_the_date('Y.m.d'); ?></time>
+            <div class="news__top">
+              <time class="news__date" datetime="<?php echo get_the_date('c'); ?>"><?php echo get_the_date('Y.m.d'); ?></time>
+              <?php
+                $terms = get_the_terms($post->ID, 'category');
+                if ($terms && ! is_wp_error($terms)) {
+                  foreach ($terms as $term) {
+                    echo '<p class="news__category">' . esc_html($term->name) . '</p>';
+                  }
+                }
+              ?>
+            </div>
             <p class="news__text"><?php echo esc_html(get_the_title()); ?></p>
           </a>
           <?php

@@ -1,0 +1,558 @@
+@use "global" as *;
+
+.sub-mv--company .sub-mv__image img {
+  object-position: center;
+}
+
+.sub-company-nav {
+  background-color: $white;
+  box-shadow: rem(2) rem(4) rem(45) 0 rgba(52, 57, 68, 0.13);
+  padding: rem(30) 0;
+}
+
+.sub-company-nav__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: rem(10) rem(30);
+  justify-content: center;
+}
+
+.sub-company-nav__item {
+}
+
+.sub-company-nav__link {
+  align-items: center;
+  border: 1px solid $blue;
+  color: $blue;
+  display: inline-flex;
+  font-size: rem(16);
+  font-family: $base-font-family;
+  font-weight: $medium;
+  gap: rem(20);
+  line-height: 1.5;
+  padding: rem(10) rem(20) rem(10) rem(35);
+  transition: opacity 0.3s;
+}
+
+.sub-company-nav__arrow {
+  background-color: $blue;
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+  display: block;
+  height: rem(7);
+  transform: rotate(90deg);
+  width: rem(12);
+}
+
+@media (any-hover: hover) {
+  .sub-company-nav__link:hover {
+    opacity: 0.7;
+  }
+}
+
+.sub-company-profile {
+  overflow: hidden;
+  padding: rem(130) 0 rem(270);
+
+  @include mq("md") {
+    padding: rem(60) 0 rem(80);
+  }
+}
+
+.sub-company-profile__inner {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  position: relative;
+
+  @include mq("md") {
+    flex-direction: column;
+  }
+}
+
+.sub-company-profile__image {
+  flex-shrink: 0;
+  width: 100%;
+  max-width: rem(1080);
+
+  @include mq("md") {
+    width: 100%;
+  }
+
+}
+
+.sub-company-profile__image img {
+  aspect-ratio: 1080 / 686;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+}
+
+.sub-company-profile__content {
+  background-color: $white;
+  box-shadow: 0 0 rem(35) 0 rgba(50, 58, 71, 0.05);
+  flex-shrink: 0;
+  left: 50%;
+  margin-left: rem(-60);
+  padding: rem(50) rem(62) rem(50) rem(62);
+  position: absolute;
+  top: rem(215);
+  width: 55%;
+  z-index: 2;
+
+  @include mq("md") {
+    margin-left: 0;
+    padding: rem(32);
+    position: relative;
+    top: 0;
+    width: 100%;
+  }
+}
+
+.sub-company-profile__heading {
+  margin-bottom: rem(24);
+}
+
+.sub-company-profile__title-en {
+  color: $blue;
+  font-size: rem(50);
+  font-family: "EB Garamond", serif;
+  font-weight: $medium;
+  letter-spacing: rem(2.5);
+  line-height: 1.5;
+
+  @include mq("md") {
+    font-size: rem(32);
+  }
+}
+
+.sub-company-profile__title-ja {
+  color: $black;
+  font-size: rem(16);
+  font-family: $second-font-family;
+  font-weight: $medium;
+  line-height: 1.5;
+}
+
+.sub-company-profile__line {
+  background-color: $light-gray;
+  display: block;
+  height: rem(1);
+  margin-top: rem(10);
+  width: rem(121);
+}
+
+.sub-company-profile__table {
+  border-radius: rem(5);
+  overflow: hidden;
+}
+
+.sub-company-profile__row {
+  border-bottom: 1px solid $light-gray;
+  display: flex;
+  align-items: flex-start;
+}
+
+.sub-company-profile__label {
+  color: $blue;
+  font-size: rem(16);
+  font-family: $base-font-family;
+  font-weight: $medium;
+  flex-shrink: 0;
+  padding: rem(12) rem(25) rem(12) 0;
+  width: rem(121);
+}
+
+.sub-company-profile__value {
+  color: $black;
+  font-size: rem(16);
+  font-family: $base-font-family;
+  font-weight: $normal;
+  line-height: 1.5;
+  padding: rem(12) rem(20);
+  flex: 1;
+}
+
+.sub-company-profile__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    padding-left: rem(16);
+    position: relative;
+
+    &::before {
+      background-color: $gray;
+      border-radius: 50%;
+      content: "";
+      height: rem(6);
+      left: 0;
+      position: absolute;
+      top: rem(6);
+      width: rem(6);
+    }
+  }
+}
+
+.sub-company-management {
+  background-color: $bg-gray;
+  padding: rem(130) 0;
+
+  @include mq("md") {
+    padding: rem(60) 0;
+  }
+}
+
+.sub-company-management__heading {
+  margin-bottom: rem(60);
+}
+
+.sub-company-management__list {
+  display: flex;
+  flex-direction: column;
+  gap: rem(80);
+}
+
+.sub-company-management__item {
+  background-color: $white;
+  box-shadow: 0 0 rem(35) 0 rgba(50, 58, 71, 0.05);
+  display: flex;
+  gap: rem(94);
+  padding: rem(40) rem(60);
+
+  @include mq("md") {
+    flex-direction: column;
+    gap: rem(24);
+    padding: rem(24);
+  }
+
+  &--reverse {
+    flex-direction: row-reverse;
+
+    @include mq("md") {
+      flex-direction: column;
+    }
+  }
+}
+
+.sub-company-management__figure {
+  flex-shrink: 0;
+  margin: 0;
+  width: rem(356);
+
+  @include mq("md") {
+    width: 100%;
+  }
+
+  img {
+    aspect-ratio: 340 / 400;
+    height: auto;
+    object-fit: cover;
+    width: 100%;
+  }
+}
+
+.sub-company-management__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.sub-company-management__name {
+  color: $blue;
+  font-size: rem(28);
+  font-family: $second-font-family;
+  font-weight: $medium;
+  line-height: 1.5;
+
+  @include mq("md") {
+    font-size: rem(24);
+  }
+}
+
+.sub-company-management__role {
+  color: $gray;
+  font-size: rem(14);
+  font-family: $base-font-family;
+  font-weight: $normal;
+  line-height: 1.5;
+}
+
+.sub-company-management__name-en {
+  color: $gray;
+  font-size: rem(16);
+  font-family: "EB Garamond", serif;
+  font-weight: $medium;
+  letter-spacing: rem(0.8);
+  line-height: 1.5;
+}
+
+.sub-company-management__line {
+  background-color: $light-gray;
+  display: block;
+  height: rem(1);
+  margin: rem(10) 0 rem(24);
+  width: 100%;
+  max-width: rem(339);
+}
+
+.sub-company-management__text {
+  color: $black;
+  font-size: rem(16);
+  font-family: $base-font-family;
+  font-weight: $normal;
+  line-height: 1.8;
+}
+
+.sub-company-member {
+  background-color: $white;
+  padding: rem(130) 0;
+
+  @include mq("md") {
+    padding: rem(60) 0;
+  }
+}
+
+.sub-company-member__heading {
+  margin-bottom: rem(60);
+}
+
+.sub-company-member__cards {
+  display: grid;
+  gap: rem(36);
+  grid-template-columns: repeat(3, 1fr);
+  margin-bottom: rem(60);
+
+  @include mq("md") {
+    grid-template-columns: 1fr;
+    gap: rem(24);
+    margin-bottom: rem(40);
+  }
+}
+
+.sub-company-member__button {
+  display: flex;
+  justify-content: center;
+}
+
+.sub-company-group {
+  background-color: $white;
+  border-radius: rem(40) rem(40) 0 0;
+  padding: rem(130) 0 rem(230);
+
+  @include mq("md") {
+    padding: rem(60) 0 rem(80);
+    border-radius: rem(24) rem(24) 0 0;
+  }
+}
+
+.sub-company-group__heading {
+  margin-bottom: rem(40);
+}
+
+.sub-company-group__lead {
+  color: $black;
+  font-size: rem(16);
+  font-family: $base-font-family;
+  font-weight: $normal;
+  line-height: 1.8;
+  text-align: center;
+  margin-bottom: rem(60);
+}
+
+.sub-company-group__diagram {
+  background-color: $bg-gray;
+  margin-bottom: rem(100);
+  padding: rem(60) rem(50);
+
+  @include mq("md") {
+    margin-bottom: rem(60);
+    padding: rem(32);
+  }
+
+  img {
+    aspect-ratio: 1;
+    height: auto;
+    margin: 0 auto;
+    max-width: rem(600);
+    object-fit: contain;
+    width: 100%;
+    display: block;
+  }
+}
+
+.sub-company-group__companies {
+  display: flex;
+  flex-direction: column;
+  gap: rem(40);
+}
+
+.sub-company-group__company {
+  border-bottom: 1px solid #e3e3e3;
+  padding-bottom: rem(40);
+  display: flex;
+  gap: rem(40);
+  align-items: flex-start;
+
+  @include mq("md") {
+    flex-direction: column;
+    gap: rem(24);
+    padding-bottom: rem(32);
+  }
+}
+
+.sub-company-group__company-header {
+  flex-shrink: 0;
+  width: rem(200);
+
+  img {
+    height: auto;
+    object-fit: contain;
+    width: 100%;
+  }
+}
+
+.sub-company-group__company-body {
+  flex: 1;
+}
+
+.sub-company-group__company-title {
+  border-left: 3px solid $yellow;
+  color: $black;
+  font-size: rem(20);
+  font-family: $base-font-family;
+  font-weight: $medium;
+  line-height: 1.5;
+  padding-left: rem(10);
+  margin-bottom: rem(10);
+}
+
+.sub-company-group__company-desc {
+  color: $black;
+  font-size: rem(16);
+  font-family: $base-font-family;
+  font-weight: $normal;
+  line-height: 1.8;
+  margin-bottom: rem(20);
+}
+
+.sub-company-group__company-info {
+  margin-bottom: rem(20);
+}
+
+.sub-company-group__info-row {
+  border-bottom: 1px solid #e3e3e3;
+  display: flex;
+  gap: rem(18);
+  padding-bottom: rem(8);
+  margin-bottom: rem(8);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  dt {
+    color: $black;
+    flex-shrink: 0;
+    font-size: rem(16);
+    font-family: $base-font-family;
+    font-weight: $normal;
+    line-height: 1.8;
+    width: rem(86);
+  }
+
+  dd {
+    color: $black;
+    font-size: rem(16);
+    font-family: $base-font-family;
+    font-weight: $normal;
+    line-height: 1.8;
+    margin: 0;
+  }
+}
+
+.sub-company-group__company-link {
+  color: $blue;
+  font-size: rem(16);
+  font-family: $base-font-family;
+  font-weight: $medium;
+  line-height: 1.5;
+  position: relative;
+  padding-right: rem(40);
+  transition: opacity 0.3s;
+
+  &::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: rem(40);
+    height: rem(4);
+    background-image: url(../images/button-arrow.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+}
+
+@media (any-hover: hover) {
+  .sub-company-group__company-link:hover {
+    opacity: 0.7;
+  }
+}
+
+.sub-company-contact {
+  background-color: $blue;
+  padding: rem(130) 0;
+
+  @include mq("md") {
+    padding: rem(60) 0;
+  }
+}
+
+.sub-company-contact__box {
+  background-color: $white;
+  border-radius: rem(20);
+  box-shadow: 0 0 rem(35) 0 rgba(50, 58, 71, 0.05);
+  margin: 0 auto;
+  max-width: rem(700);
+  padding: rem(60);
+  text-align: center;
+
+  @include mq("md") {
+    padding: rem(40) rem(24);
+  }
+}
+
+.sub-company-contact__heading .heading__title {
+  color: $blue;
+}
+
+.sub-company-contact__heading .heading__subtitle {
+  color: $black;
+}
+
+.sub-company-contact__text {
+  color: $black;
+  font-size: rem(16);
+  font-family: $base-font-family;
+  font-weight: $normal;
+  line-height: 1.8;
+  margin-top: rem(20);
+  margin-bottom: rem(30);
+}
+
+.sub-company-contact__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: rem(20);
+  justify-content: center;
+
+  @include mq("md") {
+    flex-direction: column;
+  }
+}
+
+.sub-company-contact__buttons .button--dark {
+  background-color: $blue;
+  border-color: $blue;
+}

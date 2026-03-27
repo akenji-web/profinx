@@ -1,0 +1,116 @@
+@use "global" as *;
+
+.company-profile {
+  margin-top: rem(130);
+  padding-block: rem(85) rem(130);
+  position: relative;
+
+  @include mq("md") {
+    padding: rem(60) 0 rem(80);
+  }
+}
+
+.company-profile__inner {
+  width: 100%;
+
+  @include mq("xl") {
+    max-width: rem(1440);
+    padding-inline: rem(25);
+    margin-inline: auto;
+  }
+
+  @include mq("md") {
+    padding-inline: rem(20);
+  }
+}
+
+.company-profile__image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  flex-shrink: 0;
+  width: 100%;
+  max-width: rem(1080);
+
+  @include mq("md") {
+    width: 100%;
+  }
+
+}
+
+.company-profile__image img {
+  aspect-ratio: 1080 / 686;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+}
+
+.company-profile__content {
+  margin-left: auto;
+  margin-right: 0;
+  background-color: $white;
+  box-shadow: 0 0 rem(35) 0 rgba(50, 58, 71, 0.05);
+  flex-shrink: 0;
+  padding: rem(50) rem(51) rem(50) rem(62);
+  width: 100%;
+  max-width: rem(793);
+  opacity: 0.96;
+}
+
+.company-profile__heading {
+}
+
+.company-profile__list {
+  margin-top: rem(52);
+}
+
+.company-profile__row {
+  border-bottom: 1px solid $light-gray;
+  display: flex;
+  align-items: center;
+}
+
+.company-profile__label {
+  color: $blue;
+  font-size: rem(16);
+  font-family: $base-font-family;
+  font-weight: $medium;
+  line-height: 1.5;
+  flex-shrink: 0;
+  padding: rem(12) rem(25) rem(12) 0;
+  width: rem(121);
+}
+
+.company-profile__value {
+  color: $black;
+  font-size: rem(16);
+  font-family: $base-font-family;
+  font-weight: $normal;
+  line-height: 1.5;
+  padding: rem(12) rem(20);
+}
+
+.company-profile__value-list {
+}
+
+.company-profile__value-item {
+  padding-left: rem(16);
+  position: relative;
+}
+
+.company-profile__value-item::before {
+  position: absolute;
+  left: 0;
+  top: 0.5lh;
+  transform: translateY(-50%);
+  content: "";
+  background-image: url(../images/list-icon.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  aspect-ratio: 1;
+  height: auto;
+  width: 100%;
+  max-width: rem(6);
+}

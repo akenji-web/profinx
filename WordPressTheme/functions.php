@@ -23,8 +23,35 @@ function my_script_init()
     wp_enqueue_style( 'NotoSerifJP', '//fonts.googleapis.com/css2?family=Noto+Serif+JP&display=swap' );
     wp_enqueue_style( 'EB Garamond', '//fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap' );
     wp_enqueue_script('jquery', '//code.jquery.com/jquery-3.6.1.min.js', "", "1.0.1");
-    wp_enqueue_script('main-js', get_template_directory_uri() . '/assets/js/script.js', array('jquery'), '1.0.1', true);
+    $main_js_deps = array('jquery');
+    if (
+        is_post_type_archive('case-study') || is_tax('case-study-category')
+        || is_page('company')
+    ) {
+        wp_enqueue_style('swiper-css', 'https://unpkg.com/swiper@8/swiper-bundle.min.css', array(), '8');
+        wp_enqueue_script('swiper-js', 'https://unpkg.com/swiper@8/swiper-bundle.min.js', array(), '8', true);
+        $main_js_deps[] = 'swiper-js';
+    }
+    wp_enqueue_script('main-js', get_template_directory_uri() . '/assets/js/script.js', $main_js_deps, '1.0.1', true);
     wp_enqueue_style('style-css', get_template_directory_uri() . '/assets/css/style.css', array(), '1.0.1');
+
+    // トップページ：GSAP とファーストビュー文字アニメーション
+    if (is_front_page()) {
+        wp_enqueue_script(
+            'gsap',
+            'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js',
+            array(),
+            '3.12.5',
+            true
+        );
+        wp_enqueue_script(
+            'mv-text-js',
+            get_template_directory_uri() . '/assets/js/mv-text.js',
+            array('gsap'),
+            '1.0.0',
+            true
+        );
+    }
 }
 add_action('wp_enqueue_scripts', 'my_script_init');
 
@@ -109,6 +136,21 @@ function custom_posts_per_page_blog($query)
     }
 }
 add_action('pre_get_posts', 'custom_posts_per_page_blog');
+
+// メンバー紹介の表示件数を指定
+function custom_posts_per_page_member($query)
+{
+    if (!is_admin() && $query->is_main_query()) {
+        // カスタム投稿のスラッグを記述
+        if (is_post_type_archive('member')) {
+            // 表示件数を指定
+            $query->set('posts_per_page', 9);
+        } elseif (is_tax('member-category')) {
+            $query->set('posts_per_page', 9);
+        }
+    }
+}
+add_action('pre_get_posts', 'custom_posts_per_page_member');
 
 global $wp_rewrite;
 $wp_rewrite->flush_rules();

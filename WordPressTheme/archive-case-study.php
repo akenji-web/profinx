@@ -1,8 +1,57 @@
 <?php get_header(); ?>
 <main>
+  <!-- メインビュー -->
+  <div class="sub-mv">
+    <picture class="sub-mv__image">
+      <source srcset="<?php echo esc_url(get_theme_file_uri("/assets/images/sub-mv-case-study_sp.jpg")); ?>" media="(max-width: 767px)">
+      <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/sub-mv-case-study_pc.webp")); ?>" alt="実績紹介のメイン画像">
+    </picture>
+    <!-- パンくず -->
+    <div class="sub-mv__breadcrumb breadcrumb">
+      <div class="breadcrumb__inner">
+      <?php if (function_exists('bcn_display')) { ?>
+        <div class="breadcrumb__list" vocab="http://schema.org/" typeof="BreadcrumbList">
+          <?php bcn_display(); ?>
+        </div>
+      <?php } ?>
+      </div>
+    </div>
+    <hgroup class="sub-mv__text-area">
+      <h1 class="sub-mv__title">実績紹介</h1>
+      <p class="sub-mv__subtitle">case study</p>
+    </hgroup>
+  </div>
 
-  <!-- パンくず -->
-  <?php get_template_part('parts/breadcrumb'); ?>
+  <!-- 企業ロゴ -->
+  <div class="company-logo">
+    <div class="swiper js-company-logo-swiper">
+      <?php
+        $args = array(
+          'post_type'      => 'company-logo',
+          'posts_per_page' => -1,
+          'orderby'        => 'menu_order',
+          'order'          => 'ASC',
+          'post_status'    => 'publish',
+        );
+        $logo_query = new WP_Query($args);
+      ?>
+
+      <?php if ($logo_query->have_posts()) : ?>
+      <ul class="swiper-wrapper company-logo__list">
+        <?php while ($logo_query->have_posts()) : $logo_query->the_post(); ?>
+        <li class="swiper-slide company-logo__slide">
+          <?php if (has_post_thumbnail()) : ?>
+            <img src="<?php the_post_thumbnail_url('full'); ?>" alt="<?php the_title_attribute(); ?>">
+          <?php else : ?>
+            <img src="<?php echo esc_url(get_theme_file_uri( "/assets/images/noimage.jpg" )); ?>)" alt="NoImage画像" />
+          <?php endif; ?>
+        </li>
+        <?php endwhile; ?>
+      </ul>
+      <?php wp_reset_postdata(); ?>
+      <?php endif; ?>
+    </div>
+  </div>
 
   <!-- 実績紹介 -->
   <div id="archive-case" class="blog-layout">
@@ -17,7 +66,7 @@
               $current_term_id = is_a($queried_object, 'WP_Term') ? $queried_object->term_id : 0;
               $current_heading = (is_a($queried_object, 'WP_Term') && ! empty($queried_object->name))
                 ? $queried_object->name
-                : '最近の実績';
+                : '全て';
             ?>
             <h3 class="archive-case__title"><?php echo esc_html($current_heading); ?></h3>
             <div class="archive-case__cards case-cards">
@@ -27,7 +76,7 @@
                   <p class="case-card__title"><?php the_title(); ?></p>
                   <p class="case-card__description"><?php the_field('description'); ?></p>
                   <div class="case-card__bottom">
-                    <time class="case-card__date" datetime="<?php the_time('c'); ?>"><?php the_time('Y.m.d'); ?></time>
+                    <div class="case-card__categories">
                     <?php
                     $taxonomy_terms = get_the_terms($post->ID, 'case-study-category');
                     if ( ! empty( $taxonomy_terms ) ) {
@@ -35,7 +84,8 @@
                         echo '<p class="case-card__category">' . esc_html( $taxonomy_term->name ) . '</p>';
                       }
                     }
-                  ?>
+                    ?>
+                    </div>
                   </div>
                 </div>
                 <?php endwhile; ?>

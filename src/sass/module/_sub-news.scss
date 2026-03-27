@@ -1,8 +1,6 @@
 @use "global" as *;
 
 .sub-news {
-  background-color: $bg-gray;
-  padding: rem(40) rem(32);
 }
 
 .sub-news__inner {
@@ -27,7 +25,7 @@
 .sub-news__item {
   padding-bottom: rem(25);
   border-bottom: 1px solid $light-gray;
-  transition: opacity 0.3s;
+  transition: color 0.3s;
 
   @include mq("md"){
     padding: rem(12);
@@ -38,8 +36,8 @@
 }
 
 @media (any-hover: hover) {
-  .sub-news__item:hover {
-    opacity: 0.7;
+  .sub-news__item:hover .sub-news__title {
+    color: $blue;
   }
 }
 
@@ -49,6 +47,12 @@
   @include mq("md"){
     margin-top: rem(12);
   }
+}
+
+.sub-news__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .sub-news__date {
@@ -63,6 +67,18 @@
     font-size: rem(14);
     line-height: calc(18 / 14);
   }
+}
+
+.sub-news__category {
+  display: inline-block;
+  width: fit-content;
+  background-color: $light-yellow;
+  color: $black;
+  font-size: rem(14);
+  font-family: $base-font-family;
+  font-weight: $regular;
+  line-height: 1.5;
+  padding: rem(5) rem(8);
 }
 
 .sub-news__title {

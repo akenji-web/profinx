@@ -1,0 +1,35 @@
+@use "global" as *;
+
+.lead-copy {
+  padding: rem(96) 0 rem(130);
+  background-color: $white;
+  position: relative;
+}
+
+.lead-copy.lead-copy--bg-gray {
+  background-color: $bg-gray;
+}
+
+.lead-copy__anchor-nav {
+  position: absolute;
+  top: rem(-58);
+  left: 0;
+  right: 0;
+}
+
+.lead-copy__inner {
+  width: 100%;
+  max-width: rem(752);
+  padding-right: rem(25);
+  padding-left: rem(25);
+  margin-inline: auto;
+}
+
+.lead-copy__text {
+  text-align: center;
+  color: $black;
+  font-size: rem(18);
+  font-family: $base-font-family;
+  font-weight: $medium;
+  line-height: 1.8;
+}

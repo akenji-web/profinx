@@ -1,8 +1,33 @@
 <?php get_header(); ?>
 <main>
+  <!-- メインビュー -->
+  <div class="sub-mv">
+    <picture class="sub-mv__image">
+      <source srcset="<?php echo esc_url(get_theme_file_uri("/assets/images/sub-mv-blog_sp.jpg")); ?>" media="(max-width: 767px)">
+      <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/sub-mv-blog_pc.webp")); ?>" alt="ブログのメイン画像">
+    </picture>
+    <!-- パンくず -->
+    <div class="sub-mv__breadcrumb breadcrumb">
+      <div class="breadcrumb__inner">
+      <?php if (function_exists('bcn_display')) { ?>
+        <div class="breadcrumb__list" vocab="http://schema.org/" typeof="BreadcrumbList">
+          <?php bcn_display(); ?>
+        </div>
+      <?php } ?>
+      </div>
+    </div>
+    <hgroup class="sub-mv__text-area">
+      <h1 class="sub-mv__title">ブログ</h1>
+      <p class="sub-mv__subtitle">blog</p>
+    </hgroup>
+  </div>
 
-  <!-- パンくず -->
-  <?php get_template_part('parts/breadcrumb'); ?>
+  <!-- リード文 -->
+  <div class="lead-copy lead-copy--bg-gray">
+    <div class="inner lead-copy__inner">
+      <p class="lead-copy__text">「高度な専門性を備えた経営人材チームの提供」と「データ経営の導入支援」によって​経営戦略機能/CFO機能を高度化し、経営者と共に企業価値向上を実現します。​</p>
+    </div>
+  </div>
 
   <!-- ブログ一覧 -->
   <div id="archive-blog" class="blog-layout">
@@ -17,7 +42,7 @@
               $current_term_id = is_a($queried_object, 'WP_Term') ? $queried_object->term_id : 0;
               $current_heading = (is_a($queried_object, 'WP_Term') && ! empty($queried_object->name))
                 ? $queried_object->name
-                : 'ブログ一覧';
+                : '全て';
             ?>
             <h3 class="archive-blog__title"><?php echo esc_html($current_heading); ?></h3>
             <div class="archive-blog__cards blog-cards">
@@ -32,6 +57,7 @@
                   <div class="blog-card__content">
                     <p class="blog-card__title"><?php the_title(); ?></p>
                     <div class="blog-card__bottom">
+                      <time class="blog-card__date" datetime="<?php the_time('c'); ?>"><?php the_time('Y.m.d'); ?></time>
                       <?php
                       $taxonomy_terms = get_the_terms($post->ID, 'blog-category');
                       if ( ! empty( $taxonomy_terms ) ) {
@@ -40,7 +66,6 @@
                         }
                       }
                       ?>
-                      <time class="blog-card__date" datetime="<?php the_time('c'); ?>"><?php the_time('Y.m.d'); ?></time>
                     </div>
                   </div>
                 </a>

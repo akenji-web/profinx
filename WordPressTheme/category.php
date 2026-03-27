@@ -34,7 +34,7 @@
     </div>
   </div>
 
-  <!-- ニュース一覧 -->
+  <!-- ニュース一覧（カテゴリーページ） -->
   <div id="archive-news" class="blog-layout">
     <div class="inner blog-layout__inner">
       <div class="blog-layout__container">
@@ -94,23 +94,33 @@
               ]);
 
               // ニュース一覧ページへのURL
-              $home_class = is_home() ? 'is-active' : '';
               $home_link = sprintf(
-                '<li class="category__item"><a class="%s" href="%s">全て</a></li>',
-                esc_attr($home_class),
+                '<li class="category__item"><a href="%s">全て</a></li>',
                 esc_url(home_url('/news'))
               );
               echo $home_link;
 
               // タームのリンク
               if ($terms && ! is_wp_error($terms)) {
+                $current_term_id = get_queried_object_id();
                 foreach ($terms as $term) {
-                  $term_link = sprintf(
-                    '<li class="category__item"><a class="%s" href="%s">%s</a></li>',
-                    '',
-                    esc_url(get_term_link($term)),
-                    esc_html($term->name)
-                  );
+                  $term_class = ($current_term_id === $term->term_id) ? 'is-active' : '';
+
+                  if ($current_term_id === $term->term_id) {
+                    $term_link = sprintf(
+                      '<li class="category__item"><span class="%s">%s</span></li>',
+                      esc_attr($term_class),
+                      esc_html($term->name)
+                    );
+                  } else {
+                    $term_link = sprintf(
+                      '<li class="category__item"><a class="%s" href="%s">%s</a></li>',
+                      esc_attr($term_class),
+                      esc_url(get_term_link($term)),
+                      esc_html($term->name)
+                    );
+                  }
+
                   echo $term_link;
                 }
               }

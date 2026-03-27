@@ -2,20 +2,20 @@
     <div class="footer__inner inner">
       <div class="footer__container">
         <div class="footer__left">
-          <div class="footer__logo">
+          <a href="<?php echo esc_url(home_url('/')); ?>" class="footer__logo">
             <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/logo.webp" alt="ProFinX">
-          </div>
+          </a>
           <div class="footer__group">
             <h3 class="footer__group-title">グループ会社紹介</h3>
             <div class="footer__group-logos">
-              <div class="footer__group-item">
+              <a href="https://www.plutuscon.jp/" class="footer__group-link" target="_blank" rel="noopener noreferrer">
                 <img  class="footer__group-logo" src="<?php echo esc_url(get_theme_file_uri("/assets/images/plutus-co-logo.webp")); ?>" alt="プルータス・コンサルティング">
                 <p class="footer__group-name">プルータス・コンサルティング</p>
-              </div>
-              <div class="footer__group-item">
+              </a>
+              <a href="https://plutusmaad.jp/" class="footer__group-link" target="_blank" rel="noopener noreferrer">
                 <img class="footer__group-logo" src="<?php echo esc_url(get_theme_file_uri("/assets/images/plutus-ma-logo.webp")); ?>" alt="プルータス・マネジメントアドバイザリー">
                 <p class="footer__group-name">プルータス・マネジメントアドバイザリー</p>
-              </div>
+              </a>
             </div>
           </div>
         </div>
@@ -32,7 +32,7 @@
                 <a href="<?php echo esc_url(home_url('/case-study')); ?>" class="footer__nav-link">実績紹介</a>
               </li>
               <li class="footer__nav-item">
-                <a href="<?php echo esc_url(home_url('/home')); ?>" class="footer__nav-link">ニュース</a>
+                <a href="<?php echo esc_url(home_url('/news')); ?>" class="footer__nav-link">ニュース</a>
               </li>
               <li class="footer__nav-item">
                 <a href="<?php echo esc_url(home_url('/blog')); ?>" class="footer__nav-link">ブログ</a>
