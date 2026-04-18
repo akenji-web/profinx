@@ -29,18 +29,18 @@
                 <a href="<?php echo esc_url(home_url('/services')); ?>" class="footer__nav-link">サービス</a>
               </li>
               <li class="footer__nav-item">
-                <a href="<?php echo esc_url(home_url('/case-study')); ?>" class="footer__nav-link">実績紹介</a>
+                <a href="<?php echo esc_url(home_url('/cases')); ?>" class="footer__nav-link">実績紹介</a>
               </li>
               <li class="footer__nav-item">
                 <a href="<?php echo esc_url(home_url('/news')); ?>" class="footer__nav-link">ニュース</a>
               </li>
               <li class="footer__nav-item">
-                <a href="<?php echo esc_url(home_url('/blog')); ?>" class="footer__nav-link">ブログ</a>
+                <a href="<?php echo esc_url(home_url('/insight')); ?>" class="footer__nav-link">インサイト</a>
               </li>
             </ul>
           </nav>
           <div class="footer__button-area">
-            <a href="<?php echo esc_url(home_url('/recruit')); ?>" class="footer__button footer__button--recruit">採用応募</a>
+            <a href="<?php echo esc_url(home_url('/recruit')); ?>" class="footer__button footer__button--recruit">採用</a>
             <a href="<?php echo esc_url(home_url('/contact')); ?>" class="footer__button contact-button">
               <span class="contact-button__icon"></span>お問い合わせ
             </a>

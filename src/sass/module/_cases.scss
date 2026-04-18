@@ -1,6 +1,6 @@
 @use "global" as *;
 
-.case-study {
+.cases {
   padding-top: rem(130);
   padding-bottom: rem(130);
 
@@ -10,44 +10,56 @@
   }
 }
 
-.case-study__inner {
+.cases__inner {
+  @include mq("md") {
+    max-width: rem(600);
+    margin-inline: auto;
+  }
 }
 
-.case-study__head {
+.cases__head {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: rem(60);
 
   @include mq("md") {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: rem(40);
+    display: block;
   }
 }
 
-.case-study__button {
+.cases__button {
   width: rem(244);
   flex-shrink: 0;
+
+  @include mq("md") {
+    margin-inline: auto;
+    margin-top: rem(32);
+  }
 }
 
-.case-study__list {
+.cases__container {
+  margin-top: rem(60);
+}
+
+.cases__list {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   column-gap: rem(20);
-  margin-top: rem(60);
 
   @include mq("md") {
-    flex-direction: column;
-    gap: rem(20);
-    margin-top: rem(40);
+    grid-template-columns: 1fr;
+    justify-items: center;
+    row-gap: rem(20);
+    grid-row: 2;
   }
 }
 
-.case-study__item {
+.cases__item {
   width: rem(280);
 
   @include mq("md") {
     width: 100%;
+    max-width: rem(280);
   }
 }

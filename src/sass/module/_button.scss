@@ -42,3 +42,16 @@
     right: rem(-35);
   }
 }
+
+.button.button--form {
+  max-width: rem(280);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+@media (any-hover: hover) {
+  .button.button--form:hover {
+    opacity: 1;
+    background-color: $blue;
+    color: $white;
+  }
+}

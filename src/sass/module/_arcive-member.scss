@@ -1,11 +1,12 @@
 @use "global" as *;
 
 .archive-member {
-  padding-top: rem(32);
-  background-color: $bg-gray;
+  padding-top: rem(80);
+  padding-bottom: rem(200);
 
   @include mq(md) {
-    padding-top: rem(16);
+    padding-top: rem(40);
+    padding-bottom: rem(100);
   }
 }
 
@@ -23,12 +24,10 @@
 }
 
 .archive-member__container {
-  margin-top: rem(40);
   background-color: $white;
-  padding: rem(48) rem(40);
+  padding: rem(40) rem(32);
 
   @include mq(md) {
-    margin-top: rem(20);
-    padding: rem(24) rem(20);
+    padding: rem(20) rem(16);
   }
 }

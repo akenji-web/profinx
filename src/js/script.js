@@ -1,57 +1,140 @@
 
 jQuery(function ($) { // この中であればWordpressでも「$」が使用可能になる
 
-  let topBtn = $('.c-to-top');
-  topBtn.hide();
-
-  // ボタンの表示設定
-  $(window).scroll(function () {
-    if ($(this).scrollTop() > 70) {
-      // 指定px以上のスクロールでボタンを表示
-      topBtn.fadeIn();
-    } else {
-      // 画面が指定pxより上ならボタンを非表示
-      topBtn.fadeOut();
-    }
-  });
-  //  ヘッダークラス名付与
-  let header = $('.p-header');
-  let headerHeight = $('.p-header').height();
-  let height = $('.js-mv-height').height();
-
-  console.log('ヘッダー高さ ' + headerHeight);
-  console.log('mv高さ ' + height);
-
-  $(window).scroll(function () {
-    if ($(this).scrollTop() > (height - headerHeight)) {
-      header.addClass('is-color');
-    } else {
-      header.removeClass('is-color');
-    }
-  });
-
-  // ボタンをクリックしたらスクロールして上に戻る
-  topBtn.click(function () {
-    $('body,html').animate({
-      scrollTop: 0
-    }, 300, 'swing');
-    return false;
-  });
+  function closeDrawerSubmenus() {
+    $('.js-drawer-submenu-trigger').each(function () {
+      const $btn = $(this);
+      const panelId = $btn.attr('aria-controls');
+      $btn.attr('aria-expanded', 'false');
+      if (panelId) {
+        $('#' + panelId).prop('hidden', true);
+      }
+    });
+  }
 
   //ドロワーメニュー
+  // ハンバーガーメニュー
   $(".js-hamburger").click(function () {
-    if ($('.js-hamburger').hasClass('is-active')) {
-      $('.js-hamburger').removeClass("is-active");
-      // $("html").toggleClass("is-fixed");
-      $(".js-sp-nav").fadeOut(300);
+    const $hamburger = $(".js-hamburger");
+    const isActive = $hamburger.hasClass("is-active");
+    
+    if (isActive) {
+      closeDrawerSubmenus();
+      // 閉じる時：is-closingクラスを追加してアニメーション実行
+      $hamburger.removeClass("is-active").addClass("is-closing");
+      // アニメーション完了後にis-closingクラスを削除
+      setTimeout(function() {
+        $hamburger.removeClass("is-closing");
+      }, 750); // アニメーション時間（0.75s）に合わせる
     } else {
-      $('.js-hamburger').addClass("is-active");
-      // $("html").toggleClass("is-fixed");
-      $(".js-sp-nav").fadeIn(300);
+      // 開く時：is-activeクラスを追加
+      $hamburger.addClass("is-active").removeClass("is-closing");
+    }
+    
+    $(".js-header").toggleClass("is-active");
+  });
+
+  // リサイズ時にドロワーメニュー解除
+  $(window).resize(function () {
+    if (window.matchMedia("(min-width: 768px)").matches) {
+      const $hamburger = $(".js-hamburger");
+      if ($hamburger.hasClass("is-active")) {
+        // 閉じるアニメーションを実行
+        $hamburger.removeClass("is-active").addClass("is-closing");
+        setTimeout(function() {
+          $hamburger.removeClass("is-closing");
+        }, 750);
+      }
+      $(".js-header").removeClass("is-active");
+      closeDrawerSubmenus();
     }
   });
 
+  // ハンバーガーメニューがクリックされたときに背景固定
+  $(".js-hamburger, .js-drawer").click(function () {
+    if ($("body").css("overflow") === "hidden") {
+      // overflowがhiddenなら、bodyのスタイルを元に戻す
+      $("body").css({
+        height: "",
+        overflow: ""
+      });
+    } else {
+      // bodyにheight: 100%とoverflow: hiddenを設定し、スクロールを無効にする
+      $("body").css({
+        height: "100%",
+        overflow: "hidden"
+      });
+    }
+  });
 
+  // フェードインアニメーション
+  function fadeAnime(){
+    //ふわっと動くきっかけのクラス名と動きのクラス名の設定
+    $('.js-fade__upTrigger').each(function(){ //js-fade__upTriggerというクラス名が
+      var elemPos = $(this).offset().top-50; //要素より、50px上の
+      var scroll = $(window).scrollTop();
+      var windowHeight = $(window).height();
+      if (scroll >= elemPos - windowHeight){
+        $(this).addClass('js-fade__up'); // 画面内に入ったらjs-fade__upというクラス名を追記
+      } else {
+        $(this).removeClass('js-fade__up'); // 画面外に出たらjs-fade__upというクラス名を外す
+      }
+    });
+  }
+  // 画面をスクロールをしたら動かしたい場合の記述
+  $(window).scroll(function (){
+    fadeAnime();
+  });
+
+  const $headerSubmenuParent = $('.header__nav-item--has-submenu');
+  const $headerSubmenuTrigger = $('.js-header-submenu-trigger');
+  const $headerSubmenuPanel = $('#header-submenu-services');
+
+  function closeHeaderServicesSubmenu() {
+    $headerSubmenuParent.removeClass('is-open');
+    $headerSubmenuTrigger.attr('aria-expanded', 'false');
+    $headerSubmenuPanel.prop('hidden', true);
+  }
+
+  $headerSubmenuTrigger.on('click', function (e) {
+    e.stopPropagation();
+    const isOpen = $headerSubmenuParent.hasClass('is-open');
+    if (isOpen) {
+      closeHeaderServicesSubmenu();
+    } else {
+      $headerSubmenuParent.addClass('is-open');
+      $headerSubmenuTrigger.attr('aria-expanded', 'true');
+      $headerSubmenuPanel.prop('hidden', false);
+    }
+  });
+
+  $(document).on('click', function () {
+    closeHeaderServicesSubmenu();
+  });
+
+  $headerSubmenuParent.on('click', function (e) {
+    e.stopPropagation();
+  });
+
+  $(document).on('keydown', function (e) {
+    if (e.key === 'Escape') {
+      closeHeaderServicesSubmenu();
+    }
+  });
+
+  $('.js-drawer-submenu-trigger').on('click', function () {
+    const $btn = $(this);
+    const panelId = $btn.attr('aria-controls');
+    const $panel = $('#' + panelId);
+    const isOpen = $btn.attr('aria-expanded') === 'true';
+    if (isOpen) {
+      $btn.attr('aria-expanded', 'false');
+      $panel.prop('hidden', true);
+    } else {
+      $btn.attr('aria-expanded', 'true');
+      $panel.prop('hidden', false);
+    }
+  });
 
   // スムーススクロール (絶対パスのリンク先が現在のページであった場合でも作動)
 

@@ -3,8 +3,8 @@
   <!-- メインビュー -->
   <div class="sub-mv">
     <picture class="sub-mv__image">
-      <source srcset="<?php echo esc_url(get_theme_file_uri("/assets/images/sub-mv-company_sp.jpg")); ?>" media="(max-width: 767px)">
-      <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/sub-mv-company_pc.webp")); ?>" alt="実績紹介のメイン画像">
+      <source srcset="<?php echo esc_url(get_theme_file_uri("/assets/images/sub-mv-company_sp.webp")); ?>" media="(max-width: 600px)">
+      <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/sub-mv-company_pc.webp")); ?>" alt="企業情報のメイン画像">
     </picture>
     <!-- パンくず -->
     <div class="sub-mv__breadcrumb breadcrumb">
@@ -114,8 +114,8 @@
         <div class="management__list">
           <div class="management__item">
             <div class="management__head">
-              <p class="management__role">代表取締役社長</p>
-              <div class="management__name-area">
+              <p class="management__role u-desktop">代表取締役社長</p>
+              <div class="management__name-area u-desktop">
                 <p class="management__name-ja">白石 良彰</p>
                 <p class="management__name-en">Shiraishi Yoshiaki</p>
               </div>
@@ -123,6 +123,13 @@
                 <?php $image1 = get_field('management1_image'); if( !empty($image1) ): ?>
                   <img src="<?php echo $image1['url']; ?>" alt="<?php echo $image1['alt']; ?>" loading="lazy" decoding="async">
                 <?php endif; ?>
+                <div class="management__name-overlay u-mobile">
+                  <p class="management__position">代表取締役社長</p>
+                  <div class="management__name-area">
+                    <p class="management__name-ja">白石 良彰</p>
+                    <p class="management__name-en">Shiraishi Yoshiaki</p>
+                  </div>
+                </div>
               </figure>
             </div>
             <div class="management__body">
@@ -133,8 +140,8 @@
           </div>
           <div class="management__item management__item--reverse">
             <div class="management__head">
-              <p class="management__role">代表取締役副社長</p>
-              <div class="management__name-area">
+              <p class="management__role u-desktop">代表取締役副社長</p>
+              <div class="management__name-area u-desktop">
                 <p class="management__name-ja">山手 剛人</p>
                 <p class="management__name-en">Yamate Taketo</p>
               </div>
@@ -142,6 +149,13 @@
                 <?php $image2 = get_field('management2_image'); if( !empty($image2) ): ?>
                   <img src="<?php echo $image2['url']; ?>" alt="<?php echo $image2['alt']; ?>" loading="lazy" decoding="async">
                 <?php endif; ?>
+                <div class="management__name-overlay u-mobile">
+                  <p class="management__position">代表取締役副社長</p>
+                  <div class="management__name-area">
+                    <p class="management__name-ja">山手 剛人</p>
+                    <p class="management__name-en">Yamate Taketo</p>
+                  </div>
+                </div>
               </figure>
             </div>
             <div class="management__body">
@@ -152,8 +166,8 @@
           </div>
           <div class="management__item">
             <div class="management__head">
-              <p class="management__role">パートナー</p>
-              <div class="management__name-area">
+              <p class="management__role u-desktop">パートナー</p>
+              <div class="management__name-area u-desktop">
                 <p class="management__name-ja">今堀 元皓</p>
                 <p class="management__name-en">Imahori Motohiro</p>
               </div>
@@ -161,6 +175,13 @@
                 <?php $image3 = get_field('management3_image'); if( !empty($image3) ): ?>
                   <img src="<?php echo $image3['url']; ?>" alt="<?php echo $image3['alt']; ?>" loading="lazy" decoding="async">
                 <?php endif; ?>
+                <div class="management__name-overlay u-mobile">
+                  <p class="management__position">パートナー</p>
+                  <div class="management__name-area">
+                    <p class="management__name-ja">今堀 元皓</p>
+                    <p class="management__name-en">Imahori Motohiro</p>
+                  </div>
+                </div>
               </figure>
             </div>
             <div class="management__body">

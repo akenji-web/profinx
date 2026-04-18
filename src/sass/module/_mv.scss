@@ -2,29 +2,37 @@
 
 .mv {
   position: relative;
+  margin-top: rem(105);
   width: 100%;
   height: rem(695);
   overflow: hidden;
 
   @include mq("xl") {
-    margin-top: rem(105);
     height: calc(100vh - rem(105));
   }
 
   @include mq("md") {
-    height: rem(500);
+    margin-top: rem(66);
+  }
+
+  @include mq("sm") {
+    height: auto;
   }
 }
 
 .mv__image img {
   width: 100%;
   aspect-ratio: 1440 / 695;
-  height: auto;
+  height: rem(695);
   object-fit: cover;
   object-position: center;
 
   @include mq("xl") {
     height: calc(100vh - rem(105));
+  }
+
+  @include mq("sm") {
+    aspect-ratio: 375 / 695;
   }
 }
 
@@ -36,6 +44,14 @@
   top: 50%;
   left: rem(120);
   transform: translateY(-50%);
+
+  @include mq("md") {
+    left: rem(60);
+  }
+
+  @include mq("sm") {
+    left: rem(24);
+  }
 }
 
 .mv__text {
@@ -50,15 +66,21 @@
   @include mq("md") {
     font-size: rem(32);
     letter-spacing: rem(1.6);
+    text-align: left;
   }
 }
 
 .mv__text-small {
   font-size: rem(48);
   letter-spacing: rem(2.4);
+
+  @include mq("md") {
+    font-size: rem(30);
+    letter-spacing: rem(2.8);
+  }
 }
 
-// 1文字ずつ表示アニメーション用（JSで挿入）
+// 1文字ずつ表示（GSAP / mv-text.js で挿入）
 .mv__char {
   display: inline-block;
 }

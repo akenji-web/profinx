@@ -3,10 +3,13 @@
 .company-logo {
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
-  padding-block: rem(96);
+  padding-top: rem(64);
   overflow: hidden;
   width: 100vw;
 
+  @include mq("md") {
+    padding-top: rem(32);
+  }
 }
 
 .js-company-logo-swiper {

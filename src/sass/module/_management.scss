@@ -27,6 +27,10 @@
   display: flex;
   flex-direction: column;
   gap: rem(80);
+
+  @include mq("md") {
+    gap: rem(40);
+  }
 }
 
 .management__item {
@@ -70,6 +74,12 @@
   display: flex;
   align-items: end;
   gap: rem(10);
+
+  @include mq("md") {
+    margin-top: rem(8);
+    padding-bottom: 0;
+    gap: rem(7);
+  }
 }
 
 .management__name-ja {
@@ -80,7 +90,11 @@
   line-height: 1;
 
   @include mq("md") {
-    font-size: rem(24);
+    color: $white;
+    font-family: $base-font-family;
+    font-size: rem(18);
+    font-style: normal;
+    line-height: 1.5;
   }
 }
 
@@ -91,6 +105,12 @@
   font-weight: $medium;
   letter-spacing: rem(0.8);
   line-height: 1.5;
+
+  @include mq("md") {
+    color: $white;
+    font-size: rem(12);
+    font-style: normal;
+  }
 }
 
 .management__name-area::after {
@@ -106,12 +126,23 @@
   height: auto;
   width: 100%;
   max-width: rem(339);
+
+  @include mq("md") {
+    background-image: none
+  }
 }
 
 .management__figure {
   margin-top: rem(24);
   width: 100%;
   max-width: rem(340);
+
+  @include mq("md") {
+    margin-top: 0;
+    max-width: rem(295);
+    position: relative;
+    margin-inline: auto;
+  }
 }
 
 .management__figure img {
@@ -120,6 +151,35 @@
   height: auto;
   object-fit: cover;
   object-position: center;
+
+  @include mq("md") {
+    aspect-ratio: 295 / 246;
+    object-position: 50% 10%;
+  }
+}
+
+.management__name-overlay {
+  @include mq("md") {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(61, 61, 61, 0.90);
+    padding: rem(8) rem(18);
+  }
+}
+
+.management__position {
+  @include mq("md") {
+    display: inline-block;
+    color: $white;
+    font-family: $base-font-family;
+    font-size: rem(12);
+    font-style: normal;
+    font-weight: $normal;
+    line-height: 1.5;
+    border-bottom: 1px solid $white;
+  }
 }
 
 .management__body {

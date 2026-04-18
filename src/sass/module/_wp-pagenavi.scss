@@ -10,16 +10,22 @@
 }
 
 .wp-pagenavi a {
-	color: $gray;
+	width: rem(24);
+	text-align: center;
+	border-bottom: 2px solid transparent;
+	color: $blue;
 	font-size: rem(20);
 	font-family: $base-font-family;
 	font-style: normal;
-	font-weight: $regular;
+	font-weight: $normal;
 	line-height: normal;
-	transition: color 0.3s;
+	transition: opacity 0.3s;
 }
 
 .wp-pagenavi span.current {
+	width: rem(24);
+	text-align: center;
+	border-bottom: 2px solid $blue;
 	color: $blue;
 	font-size: rem(20);
 	font-family: $base-font-family;
@@ -30,7 +36,7 @@
 
 @media (any-hover: hover) {
 	.wp-pagenavi a:hover {
-		color: $blue;
+		opacity: 0.7;
 	}
 }
 

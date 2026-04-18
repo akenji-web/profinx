@@ -25,7 +25,11 @@
   font-size: rem(16);
   font-family: $base-font-family;
   font-weight: $normal;
-  line-height: 1.8;
+  line-height: normal;
+}
+
+.case-card__description p {
+  margin-top: rem(8);
 }
 
 .case-card__bottom {
@@ -49,4 +53,11 @@
   font-weight: $normal;
   line-height: 1.5;
   padding: rem(5) rem(8);
+  transition: opacity 0.3s;
+}
+
+@media (any-hover: hover) {
+  .case-card__category:hover {
+    opacity: 0.7;
+  }
 }

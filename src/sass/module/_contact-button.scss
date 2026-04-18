@@ -46,6 +46,10 @@
   font-family: $second-font-family;
   font-weight: $bold;
   line-height: 1.5;
+
+  @include mq("md") {
+    max-width: 100%;
+  }
 }
 
 .contact-button.contact-button--small .contact-button__icon {

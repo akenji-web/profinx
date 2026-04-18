@@ -3,7 +3,7 @@
 .member-cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  column-gap: rem(36);
+  column-gap: rem(40);
   row-gap: rem(48);
 
   @include mq("md") {

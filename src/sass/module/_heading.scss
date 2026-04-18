@@ -30,7 +30,13 @@
   line-height: 1.5;
   letter-spacing: rem(2.5);
   text-transform: capitalize;
+
+  @include mq("md") {
+    font-size: rem(32);
+    letter-spacing: rem(1.6);
+  }
 }
+
 
 .heading__subtitle {
   color: $black;

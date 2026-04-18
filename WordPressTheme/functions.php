@@ -25,7 +25,7 @@ function my_script_init()
     wp_enqueue_script('jquery', '//code.jquery.com/jquery-3.6.1.min.js', "", "1.0.1");
     $main_js_deps = array('jquery');
     if (
-        is_post_type_archive('case-study') || is_tax('case-study-category')
+        is_post_type_archive('cases') || is_tax('cases-category')
         || is_page('company')
     ) {
         wp_enqueue_style('swiper-css', 'https://unpkg.com/swiper@8/swiper-bundle.min.css', array(), '8');
@@ -48,7 +48,7 @@ function my_script_init()
             'mv-text-js',
             get_template_directory_uri() . '/assets/js/mv-text.js',
             array('gsap'),
-            '1.0.0',
+            '1.0.1',
             true
         );
     }
@@ -88,54 +88,35 @@ function Change_objectlabel() {
 add_action( 'init', 'Change_objectlabel' );
 add_action( 'admin_menu', 'Change_menulabel' );
 
-// お問い合わせの確認、完了画面のパンくずを削除する
-function bcn_add($bcnObj) {
-    if (is_page('confirm')) {
-        // 確認画面のパンくずの中身を入れ替え
-        $bcnObj->trail[0] = clone $bcnObj->trail[1];
-        $bcnObj->trail[1] = clone $bcnObj->trail[2];
-        $bcnObj->trail[2] = null;
-    } elseif (is_page('thanks')) {
-        // 完了画面のパンくずの中身を入れ替え
-        $bcnObj->trail[0] = clone $bcnObj->trail[2];
-        $bcnObj->trail[1] = clone $bcnObj->trail[3];
-        $bcnObj->trail[2] = null;
-        $bcnObj->trail[3] = null;
-    } else {
-        return $bcnObj;
-    }
-}
-add_action('bcn_after_fill', 'bcn_add');
-
 // 実績紹介の表示件数を指定
-function custom_posts_per_page_case_study($query)
+function custom_posts_per_page_cases($query)
 {
     if (!is_admin() && $query->is_main_query()) {
         // カスタム投稿のスラッグを記述
-        if (is_post_type_archive('case-study')) {
+        if (is_post_type_archive('cases')) {
             // 表示件数を指定
             $query->set('posts_per_page', 6);
-        } elseif (is_tax('case-study-category')) {
+        } elseif (is_tax('cases-category')) {
             $query->set('posts_per_page', 6);
         }
     }
 }
-add_action('pre_get_posts', 'custom_posts_per_page_case_study');
+add_action('pre_get_posts', 'custom_posts_per_page_cases');
 
-// ブログの表示件数を指定
-function custom_posts_per_page_blog($query)
+// インサイトの表示件数を指定
+function custom_posts_per_page_insight($query)
 {
     if (!is_admin() && $query->is_main_query()) {
         // カスタム投稿のスラッグを記述
-        if (is_post_type_archive('blog')) {
+        if (is_post_type_archive('insight')) {
             // 表示件数を指定
             $query->set('posts_per_page', 9);
-        } elseif (is_tax('blog-category')) {
+        } elseif (is_tax('insight-category')) {
             $query->set('posts_per_page', 9);
         }
     }
 }
-add_action('pre_get_posts', 'custom_posts_per_page_blog');
+add_action('pre_get_posts', 'custom_posts_per_page_insight');
 
 // メンバー紹介の表示件数を指定
 function custom_posts_per_page_member($query)
@@ -152,5 +133,44 @@ function custom_posts_per_page_member($query)
 }
 add_action('pre_get_posts', 'custom_posts_per_page_member');
 
-global $wp_rewrite;
-$wp_rewrite->flush_rules();
+// function create_case_post_type() {
+//     register_post_type('cases', array(
+//         'label' => '実績紹介',
+//         'public' => true,
+//         'show_in_rest' => true,
+//         'has_archive' => true,
+//         'supports' => array('title', 'editor', 'thumbnail'),
+//         'template' => array(
+//             array('core/heading', array(
+//                 'level' => 3,
+//                 'content' => '業種'
+//             )),
+//             array('core/paragraph', array(
+//                 'placeholder' => '業種を入力してください'
+//             )),
+//             array('core/heading', array(
+//                 'level' => 3,
+//                 'content' => '上場区分'
+//             )),
+//             array('core/paragraph', array(
+//                 'placeholder' => '上場区分を入力してください'
+//             )),
+//             array('core/heading', array(
+//                 'level' => 3,
+//                 'content' => '売上規模'
+//             )),
+//             array('core/paragraph', array(
+//                 'placeholder' => '売上規模を入力してください'
+//             )),
+//             array('core/heading', array(
+//                 'level' => 3,
+//                 'content' => '支援内容'
+//             )),
+//             array('core/paragraph', array(
+//                 'placeholder' => '支援内容を入力してください'
+//             )),
+//         ),
+//         'template_lock' => 'insert',
+//     ));
+// }
+// add_action('init', 'create_case_post_type');

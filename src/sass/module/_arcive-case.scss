@@ -7,9 +7,12 @@
 }
 
 .archive-case__container {
-  margin-top: rem(40);
   background-color: $white;
   padding: rem(40) rem(32);
+
+  @include mq("md") {
+    padding: rem(20) rem(16);
+  }
 }
 
 .archive-case__title {

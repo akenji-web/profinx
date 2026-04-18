@@ -12,6 +12,11 @@
 
 .about__inner.inner {
   padding-left: rem(85);
+
+  @include mq("md") {
+    padding-left: $padding-sp;
+    max-width: rem(600);
+  }
 }
 
 .about__heading {
@@ -25,8 +30,8 @@
   letter-spacing: rem(1.8);
 
   @include mq("md") {
-    font-size: rem(24);
-    letter-spacing: rem(1.2);
+    font-size: rem(32);
+    letter-spacing: rem(1.6);
   }
 }
 
@@ -53,7 +58,6 @@
   column-gap: rem(51);
 
   @include mq("md") {
-    margin-top: rem(40);
     flex-direction: column;
     gap: rem(40);
   }
@@ -72,11 +76,21 @@
   font-family: $base-font-family;
   font-weight: $normal;
   line-height: 1.8;
+
+  @include mq("md") {
+    margin-top: rem(30);
+    font-size: rem(14);
+  }
 }
 
 .about__button {
   margin-top: rem(40);
   width: rem(244);
+
+  @include mq("md") {
+    margin-top: rem(24);
+    margin-inline: auto;
+  }
 }
 
 .about__image {
@@ -90,5 +104,11 @@
   height: auto;
   object-fit: contain;
   object-position: center;
+
+  @include mq("md") {
+    aspect-ratio: 328 / 264;
+    width: 100%;
+    margin-inline: auto;
+  }
 }
 

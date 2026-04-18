@@ -4,6 +4,11 @@
   position: absolute;
   top: rem(30);
   left: rem(50);
+
+  @include mq("md") {
+    top: rem(16);
+    left: rem(24);
+  }
 }
 
 .breadcrumb__inner {

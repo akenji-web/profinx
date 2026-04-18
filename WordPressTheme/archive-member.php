@@ -3,8 +3,8 @@
   <!-- メインビュー -->
   <div class="sub-mv">
     <picture class="sub-mv__image">
-      <source srcset="<?php echo esc_url(get_theme_file_uri("/assets/images/sub-mv-member_sp.jpg")); ?>" media="(max-width: 767px)">
-      <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/sub-mv-member_pc.webp")); ?>" alt="実績紹介のメイン画像">
+      <source srcset="<?php echo esc_url(get_theme_file_uri("/assets/images/sub-mv-member_sp.webp")); ?>" media="(max-width: 600px)">
+      <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/sub-mv-member_pc.webp")); ?>" alt="メンバー紹介のメイン画像">
     </picture>
     <!-- パンくず -->
     <div class="sub-mv__breadcrumb breadcrumb">
@@ -20,16 +20,6 @@
       <h1 class="sub-mv__title">メンバー紹介</h1>
       <p class="sub-mv__subtitle">member</p>
     </hgroup>
-  </div>
-
-  <!-- リード文 -->
-  <div class="lead-copy lead-copy--bg-gray">
-    <div class="inner lead-copy__inner">
-      <p class="lead-copy__text">
-        「高度な専門性を備えた経営人材チームの提供」と「データ経営の導入支援」によって<br>
-        ​経営戦略機能/CFO機能を高度化し、経営者と共に企業価値向上を実現します。
-      </p>
-    </div>
   </div>
 
   <!-- メンバー紹介 -->
@@ -63,7 +53,7 @@
           <?php else : ?>
             <p>メンバー情報はありません。</p>
           <?php endif; ?>
-        </div><!-- blog-cards -->
+        </div><!-- insight-cards -->
 
         <!-- ページネーション -->
         <div class="top-pagination">
@@ -76,6 +66,27 @@
       </div>
     </div>
   </div>
+
+  <!-- Contact -->
+  <section class="contact">
+    <div class="contact__inner inner">
+      <div class="contact__container">
+        <hgroup class="heading heading--contact">
+          <h2 class="heading__title">Contact</h2>
+          <p class="heading__subtitle">お問い合わせ</p>
+        </hgroup>
+        <div class="contact__content">
+          <p class="contact__text">各種経営相談や勉強会開催などにも対応しております。<br>お気軽にお問合せください。</p>
+          <div class="contact__button-area">
+            <a href="tel:03-6257-2000" class="contact__button contact__button-tel">TEL.03-6257-2000</a>
+            <a href="<?php echo esc_url(home_url('/contact')); ?>" class="contact__button contact-button contact-button--large">
+              <span class="contact-button__icon"></span>お問い合わせ
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
 </main>
 <?php get_footer(); ?>

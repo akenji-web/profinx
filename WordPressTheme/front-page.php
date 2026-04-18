@@ -4,11 +4,11 @@
   <div class="mv">
     <div class="mv__inner">
       <picture class="mv__image">
-        <source media="(max-width: 768px)" srcset="<?php echo esc_url(get_theme_file_uri("/assets/images/mv-sp.jpg")); ?>">
+        <source media="(max-width: 600px)" srcset="<?php echo esc_url(get_theme_file_uri("/assets/images/mv_sp.webp")); ?>">
         <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/mv_pc.webp")); ?>" alt="">
       </picture>
       <div class="mv__text-area">
-        <p class="mv__text">ProFinX Co.は<br>
+        <p class="mv__text js-mv-text">ProFinX Co.は<br>
         企業価値向上<span class="mv__text-small">を</span>支<span class="mv__text-small">える</span><br>
         経営参謀<span class="mv__text-small">です。</span></p>
       </div>
@@ -16,7 +16,7 @@
   </div>
 
   <!-- About -->
-  <section class="about">
+  <section class="about js-fade__upTrigger">
     <div class="about__inner inner">
       <div class="about__container">
         <div class="about__contents">
@@ -44,11 +44,11 @@
   <!-- Value Proposition -->
   <section class="value-proposition">
     <div class="value-proposition__inner inner">
-      <hgroup class="heading value-proposition__heading">
+      <hgroup class="heading value-proposition__heading js-fade__upTrigger">
         <h2 class="heading__title">value proposition</h2>
         <p class="heading__subtitle">提供価値</p>
       </hgroup>
-      <div class="value-proposition__container">
+      <div class="value-proposition__container js-fade__upTrigger">
         <figure class="value-proposition__image">
           <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/our-strength-image.webp")); ?>" alt="ビジネスミーティングの様子" loading="lazy" decoding="async">
         </figure>
@@ -110,11 +110,11 @@
   <!-- Services -->
   <section class="services">
     <div class="services__inner inner">
-      <hgroup class="services__heading heading heading--left">
+      <hgroup class="services__heading heading heading--left js-fade__upTrigger">
         <h2 class="heading__title">services</h2>
         <p class="heading__subtitle">コンサルティングメニュー</p>
       </hgroup>
-      <ul class="services__list">
+      <ul class="services__list js-fade__upTrigger">
         <li class="services__item">
           <a href="#" class="services__card services-card">
             <div class="services-card__icon">
@@ -207,56 +207,61 @@
     </div>
   </section>
 
-  <!-- Case Study -->
-  <section class="case-study">
-    <div class="case-study__inner inner">
-      <div class="case-study__head">
-        <hgroup class="heading heading--left">
-          <h2 class="heading__title">case study</h2>
+  <!-- Cases -->
+  <section class="cases">
+    <div class="cases__inner inner">
+      <div class="cases__head">
+        <hgroup class="heading heading--left cases__title js-fade__upTrigger">
+          <h2 class="heading__title">cases</h2>
           <p class="heading__subtitle">実績紹介</p>
         </hgroup>
-        <div class="case-study__button">
-          <a href="<?php echo esc_url(home_url('/case-study')); ?>" class="button">View more<span class="button__arrow"></span></a>
+        <div class="cases__button u-desktop">
+          <a href="<?php echo esc_url(home_url('/cases')); ?>" class="button">View more<span class="button__arrow"></span></a>
         </div>
       </div>
-      <ul class="case-study__list">
-        <?php
-        $case_study_query = new WP_Query([
-          'post_type' => 'case-study',
-          'posts_per_page' => 4,
-          'orderby' => 'date',
-          'order' => 'DESC',
-        ]);
-        if ($case_study_query->have_posts()) :
-          while ($case_study_query->have_posts()) : $case_study_query->the_post();
-        ?>
-        <li class="case-study__item case-card">
-          <p class="case-card__title"><?php the_title(); ?></p>
-          <p class="case-card__description"><?php echo esc_html(get_field('description') ?: '〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇'); ?></p>
-          <div class="case-card__bottom">
-            <div class="case-card__categories">
-            <?php
-            $taxonomy_terms = get_the_terms($post->ID, 'case-study-category');
-            if (!empty($taxonomy_terms)) {
-              foreach ($taxonomy_terms as $taxonomy_term) {
-                echo '<span class="case-card__category">' . esc_html($taxonomy_term->name) . '</span>';
+      <div class="cases__container">
+        <ul class="cases__list js-fade__upTrigger">
+          <?php
+          $cases_query = new WP_Query([
+            'post_type' => 'cases',
+            'posts_per_page' => 4,
+            'orderby' => 'date',
+            'order' => 'DESC',
+          ]);
+          if ($cases_query->have_posts()) :
+            while ($cases_query->have_posts()) : $cases_query->the_post();
+          ?>
+          <li class="cases__item case-card">
+            <p class="case-card__title"><?php the_title(); ?></p>
+            <p class="case-card__description"><?php echo esc_html(get_field('description') ?: '〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇'); ?></p>
+            <div class="case-card__bottom">
+              <div class="case-card__categories">
+              <?php
+              $taxonomy_terms = get_the_terms($post->ID, 'cases-category');
+              if (!empty($taxonomy_terms)) {
+                foreach ($taxonomy_terms as $taxonomy_term) {
+                  echo '<span class="case-card__category">' . esc_html($taxonomy_term->name) . '</span>';
+                }
               }
-            }
-            ?>
+              ?>
+              </div>
             </div>
-          </div>
-        </li>
-        <?php
-          endwhile;
-          wp_reset_postdata();
-        endif;
-        ?>
-      </ul>
+          </li>
+          <?php
+            endwhile;
+            wp_reset_postdata();
+          endif;
+          ?>
+        </ul>
+        <div class="cases__button u-mobile">
+          <a href="<?php echo esc_url(home_url('/cases')); ?>" class="button">View more<span class="button__arrow"></span></a>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- News -->
-  <section class="news">
+  <section class="news js-fade__upTrigger">
     <div class="news__inner inner">
       <div class="news__container">
         <div class="news__left">
@@ -264,7 +269,7 @@
             <h2 class="heading__title">news</h2>
             <p class="heading__subtitle">ニュース</p>
           </hgroup>
-          <div class="news__button">
+          <div class="news__button u-desktop">
             <a href="<?php echo esc_url(home_url('/news')); ?>" class="button">お知らせ一覧<span class="button__arrow"></span></a>
           </div>
         </div>
@@ -299,6 +304,9 @@
           endif;
           ?>
         </div>
+        <div class="news__button u-mobile">
+          <a href="<?php echo esc_url(home_url('/news')); ?>" class="button">お知らせ一覧<span class="button__arrow"></span></a>
+        </div>
       </div>
     </div>
   </section>
@@ -307,13 +315,13 @@
   <section class="contact">
     <div class="contact__inner inner">
       <div class="contact__container">
-        <hgroup class="heading heading--contact">
+        <hgroup class="heading heading--contact js-fade__upTrigger">
           <h2 class="heading__title">Contact</h2>
           <p class="heading__subtitle">お問い合わせ</p>
         </hgroup>
         <div class="contact__content">
-          <p class="contact__text">各種経営相談や勉強会開催などにも対応しております。<br>お気軽にお問合せください。</p>
-          <div class="contact__button-area">
+          <p class="contact__text js-fade__upTrigger">各種経営相談や勉強会開催などにも対応しております。<br>お気軽にお問合せください。</p>
+          <div class="contact__button-area js-fade__upTrigger">
             <a href="tel:03-6257-2000" class="contact__button contact__button-tel">TEL.03-6257-2000</a>
             <a href="<?php echo esc_url(home_url('/contact')); ?>" class="contact__button contact-button contact-button--large">
               <span class="contact-button__icon"></span>お問い合わせ

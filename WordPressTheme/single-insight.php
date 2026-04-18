@@ -8,8 +8,8 @@
   <!-- メインビュー -->
   <div class="sub-mv">
     <picture class="sub-mv__image">
-      <source srcset="<?php echo esc_url(get_theme_file_uri("/assets/images/sub-mv-news_sp.jpg")); ?>" media="(max-width: 767px)">
-      <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/sub-mv-news_pc.webp")); ?>" alt="ニュースのメイン画像">
+      <source srcset="<?php echo esc_url(get_theme_file_uri("/assets/images/sub-mv-blog_sp.webp")); ?>" media="(max-width: 600px)">
+      <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/sub-mv-blog_pc.webp")); ?>" alt="インサイトのメイン画像">
     </picture>
     <!-- パンくず -->
     <div class="sub-mv__breadcrumb breadcrumb">
@@ -22,35 +22,36 @@
       </div>
     </div>
     <hgroup class="sub-mv__text-area">
-      <h1 class="sub-mv__title">ニュース</h1>
-      <p class="sub-mv__subtitle">news</p>
+      <h1 class="sub-mv__title">インサイト</h1>
+      <p class="sub-mv__subtitle">insight</p>
     </hgroup>
   </div>
 
-  <!-- 投稿詳細 -->
-  <div class="news-detail">
-    <div class="news-detail__inner sub-inner">
-      <div class="news-detail__container">
-
+  <!-- インサイト詳細 -->
+  <div class="insight-detail">
+    <div class="insight-detail__inner sub-inner">
+      <div class="insight-detail__container">
         <?php if (have_posts()) : ?>
           <?php while (have_posts()) : the_post(); ?>
-            <div class="news-detail__head">
-              <time class="news-detail__date" datetime="<?php the_time('c'); ?>"><?php the_time('Y.m.d'); ?></time>
-              <h1 class="news-detail__title"><?php the_title(); ?></h1>
-              <figure class="news-detail__image">
+            <div class="insight-detail__head">
+              <time class="insight-detail__date" datetime="<?php the_time('c'); ?>"><?php the_time('Y.m.d'); ?></time>
+              <h1 class="insight-detail__title"><?php the_title(); ?></h1>
+              <figure class="insight-detail__image">
                 <?php if (has_post_thumbnail()) : ?>
                   <img src="<?php the_post_thumbnail_url('full'); ?>" alt="<?php the_title_attribute(); ?>" loading="lazy" decoding="async">
+                <?php else : ?>
+                  <img src="<?php echo esc_url(get_theme_file_uri( "/assets/images/noimage.jpg" )); ?>)" alt="NoImage画像" loading="lazy" decoding="async">
                 <?php endif ; ?>
               </figure>
             </div>
-            <div class="news-detail__content">
+            <div class="insight-detail__content">
               <?php the_content(); ?>
             </div>
           <?php endwhile; ?>
         <?php endif; ?>
 
         <!-- ページネーション -->
-        <div class="pagination top-pagination">
+        <div class="pagination top-pagination pagination--no-number">
           <?php
             // 前の記事へのリンク
             $prev_link = get_previous_post_link('<div class="pagination__item">%link</div>', '<span class="pagination__prev"></span>');
