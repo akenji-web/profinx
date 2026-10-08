@@ -26,17 +26,25 @@
   width: 100%;
   background-color: rgba(17, 33, 82, 0.9);
   padding: rem(10) rem(20);
+
+  @include mq("md") {
+    padding: rem(7) rem(17) rem(8);
+  }
 }
 
 .member-card__position {
   display: inline-block;
   color: $white;
-  font-family: $base-font-family;
+  font-family: $second-font-family;
   font-size: rem(14);
   font-style: normal;
   font-weight: $normal;
   line-height: 1.5;
   border-bottom: 1px solid $white;
+
+  @include mq("md") {
+    font-size: rem(12);
+  }
 }
 
 .member-card__name-area {
@@ -48,11 +56,15 @@
 
 .member-card__name-ja {
   color: $white;
-  font-family: $base-font-family;
+  font-family: $second-font-family;
   font-size: rem(20);
   font-style: normal;
   font-weight: $medium;
-  line-height: 1.5; 
+  line-height: 1.5;
+
+  @include mq("md") {
+    font-size: rem(18);
+  }
 }
 
 .member-card__name-en {
@@ -62,18 +74,30 @@
   font-style: normal;
   font-weight: $medium;
   line-height: 1.5;
+
+  @include mq("md") {
+    font-size: rem(12);
+  }
 }
 
 .member-card__body {
   padding: rem(20) rem(20) rem(30);
+
+  @include mq("md") {
+    padding: rem(20) rem(8) rem(30);
+  }
 }
 
 .member-card__profile {
   color: $black;
-  font-family: $base-font-family;
+  font-family: $second-font-family;
   font-size: rem(16);
   font-style: normal;
   font-weight: $normal;
   line-height: 1.8;
+
+  @include mq("md") {
+    font-size: rem(12);
+  }
 }
 

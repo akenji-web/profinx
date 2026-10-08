@@ -19,6 +19,7 @@
   padding-right: rem(250);
 
   @include mq("md") {
+    max-width: rem(600);
     padding-left: rem(20);
     padding-right: rem(20);
   }
@@ -96,4 +97,3 @@
     opacity: 0.7;
   }
 }
-

@@ -23,68 +23,19 @@
   </div>
 
   <!-- お問い合わせフォーム -->
-  <div class="sub-contact">
+  <div class="sub-contact js-fade__upTrigger">
     <div class="sub-contact__inner sub-inner">
       <div class="sub-contact__container">
-      <?php echo do_shortcode('[contact-form-7 id="edecd81" title="お問い合わせ"]'); ?>
-        <!-- <form class="sub-contact__form contact-form" action="#" method="POST">
-          <ul class="contact-form__items">
-            <li class="contact-form__item">
-              <p class="contact-form__label">会社名<span>必須</span></p>
-              <div class="contact-form__input"><input type="text" id="contact-company" name="your-company" required></div>
-            </li>
-            <li class="contact-form__item">
-              <p class="contact-form__label">部署名<span>必須</span></p>
-              <div class="contact-form__input"><input type="text" id="contact-department" name="your-department" required></div>
-            </li>
-            <li class="contact-form__item">
-              <p class="contact-form__label">役職<span>必須</span></p>
-              <div class="contact-form__input"><input type="text" id="contact-position" name="your-position" required></div>
-            </li>
-            <li class="contact-form__item">
-              <p class="contact-form__label">お名前<span>必須</span></p>
-              <div class="contact-form__input"><input type="text" id="contact-name" name="your-name" required></div>
-            </li>
-            <li class="contact-form__item">
-              <p class="contact-form__label">電話番号<span>必須</span></p>
-              <div class="contact-form__input"><input type="tel" id="contact-tel" name="your-tel" required></div>
-            </li>
-            <li class="contact-form__item">
-              <p class="contact-form__label">メールアドレス<span>必須</span></p>
-              <div class="contact-form__input"><input type="email" id="contact-email" name="your-email" required></div>
-            </li>
-            <li class="contact-form__item">
-              <p class="contact-form__label">お問い合わせ内容<span>必須</span></p>
-              <div class="contact-form__input"><textarea id="contact-message" name="your-message" required></textarea></div>
-            </li>
-          </ul>
-          <div class="contact-form__button">
-            <button type="submit" class="button button--form">送信</button>
-          </div>
-        </form> -->
+        <?php echo do_shortcode('[contact-form-7 id="edecd81" title="お問い合わせ"]'); ?>
       </div>
+      <p class="sub-contact__recapcha recapcha-text">このサイトはreCAPTCHAによって保護されており、Googleの
+        <a href="https://policies.google.com/privacy" target="_blank">プライバシーポリシー</a> と
+        <a href="https://policies.google.com/terms" target="_blank">利用規約</a> が適用されます。
+      </p>
     </div>
   </div>
 
   <!-- Contact -->
-  <section class="contact">
-    <div class="contact__inner inner">
-      <div class="contact__container">
-        <hgroup class="heading heading--contact">
-          <h2 class="heading__title">Contact</h2>
-          <p class="heading__subtitle">お問い合わせ</p>
-        </hgroup>
-        <div class="contact__content">
-          <p class="contact__text">各種経営相談や勉強会開催などにも対応しております。<br>お気軽にお問合せください。</p>
-          <div class="contact__button-area">
-            <a href="tel:03-6257-2000" class="contact__button contact__button-tel">TEL.03-6257-2000</a>
-            <a href="<?php echo esc_url(home_url('/contact')); ?>" class="contact__button contact-button contact-button--large">
-              <span class="contact-button__icon"></span>お問い合わせ
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <?php get_template_part('parts/contact'); ?>
 </main>
 <?php get_footer(); ?>

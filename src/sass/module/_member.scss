@@ -9,11 +9,30 @@
   }
 }
 
+.member__inner {
+  width: 100%;
+  max-width: rem(1290);
+  padding-left: rem(25);
+  padding-right: rem(25);
+  margin-inline: auto;
+
+  @include mq("md") {
+    max-width: rem(600);
+    padding-left: rem(24);
+    padding-right: rem(24);
+  }
+}
+
 .member__heading {
 }
 
 .member__container {
   margin-top: rem(60);
+
+  @include mq("md") {
+    padding-left: rem(16);
+    padding-right: rem(16);
+  }
 }
 
 .member__slide {
@@ -21,14 +40,11 @@
   display: grid;
   grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
-  column-gap: clamp(#{rem(8)}, 1.5vw, #{rem(16)});
-  width: 100%;
-  max-width: rem(1080);
-  margin-inline: auto;
+  column-gap: clamp(#{rem(8)}, 1.5vw, #{rem(30)});
+  column-gap: rem(30);
 
   @include mq("md") {
     display: block;
-    max-width: none;
   }
 }
 
@@ -54,7 +70,13 @@
 }
 
 .member__card {
+  width: 100%;
+  max-width: rem(336);
   height: 100%;
+
+  @include mq("md") {
+    max-width: none;
+  }
 }
 
 .member__prev,
@@ -71,9 +93,9 @@
 
   @include mq("md") {
     position: absolute;
-    height: rem(50);
-    width: rem(50);
-    top: rem(120);
+    height: rem(24);
+    width: rem(24);
+    top: rem(198);
   }
 }
 
@@ -84,7 +106,7 @@
   @include mq("md") {
     grid-column: auto;
     grid-row: auto;
-    left: rem(8);
+    left: rem(-32);
     right: auto;
   }
 }
@@ -96,7 +118,7 @@
   @include mq("md") {
     grid-column: auto;
     grid-row: auto;
-    right: rem(8);
+    right: rem(-32);
     left: auto;
   }
 }
@@ -126,7 +148,7 @@
   display: block;
   height: 100%;
   margin: auto;
-  max-height: rem(50);
+  aspect-ratio: 1;
   max-width: rem(50);
   width: 100%;
 }
@@ -140,7 +162,11 @@
 }
 
 .member__button {
-  margin-top: rem(60);
+  margin-top: rem(54);
   display: flex;
   justify-content: center;
+
+  @include mq("md") {
+    margin-top: rem(60);
+  }
 }

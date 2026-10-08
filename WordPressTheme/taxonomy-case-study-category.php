@@ -3,7 +3,7 @@
   <!-- メインビュー -->
   <div class="sub-mv">
     <picture class="sub-mv__image">
-      <source srcset="<?php echo esc_url(get_theme_file_uri("/assets/images/sub-mv-case-study_sp.webp")); ?>" media="(max-width: 600px)">
+      <source srcset="<?php echo esc_url(get_theme_file_uri("/assets/images/sub-mv-case-study_sp.jpg")); ?>" media="(max-width: 767px)">
       <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/sub-mv-case-study_pc.webp")); ?>" alt="実績紹介のメイン画像">
     </picture>
     <!-- パンくず -->
@@ -18,7 +18,7 @@
     </div>
     <hgroup class="sub-mv__text-area">
       <h1 class="sub-mv__title">実績紹介</h1>
-      <p class="sub-mv__subtitle">cases</p>
+      <p class="sub-mv__subtitle">case study</p>
     </hgroup>
   </div>
 
@@ -54,10 +54,10 @@
   </div>
 
   <!-- 実績紹介 -->
-  <div id="archive-case" class="archive-layout js-fade__upTrigger">
-    <div class="inner archive-layout__inner">
-      <div class="archive-layout__container">
-        <div class="archive-layout__main archive-case">
+  <div id="archive-case" class="blog-layout">
+    <div class="inner blog-layout__inner">
+      <div class="blog-layout__container">
+        <div class="blog-layout__main archive-case">
           <?php
             // 現在いるページのクエリ対象オブジェクトを取得
             $queried_object = get_queried_object();
@@ -73,17 +73,14 @@
                 <?php while (have_posts()) : the_post(); ?>
                 <div class="case-cards__item case-card">
                   <p class="case-card__title"><?php the_title(); ?></p>
-                  <div class="case-card__description"><?php the_content(); ?></div>
+                  <p class="case-card__description"><?php the_field('description'); ?></p>
                   <div class="case-card__bottom">
                     <div class="case-card__categories">
                     <?php
-                    $taxonomy_terms = get_the_terms(get_the_ID(), 'cases-category');
-                    if ( ! empty($taxonomy_terms) && ! is_wp_error($taxonomy_terms) ) {
-                      foreach ( $taxonomy_terms as $taxonomy_term ) {
-                        $term_link = get_term_link($taxonomy_term);
-                        if ( ! is_wp_error($term_link) ) {
-                          echo '<a class="case-card__category" href="' . esc_url($term_link) . '">' . esc_html($taxonomy_term->name) . '</a>';
-                        }
+                    $taxonomy_terms = get_the_terms($post->ID, 'case-study-category');
+                    if ( ! empty( $taxonomy_terms ) ) {
+                      foreach( $taxonomy_terms as $taxonomy_term ) {
+                        echo '<p class="case-card__category">' . esc_html( $taxonomy_term->name ) . '</p>';
                       }
                     }
                     ?>
@@ -95,7 +92,7 @@
                 <p>記事が投稿されていません</p>
               <?php endif; ?>
             </div><!-- case-cards -->
-  
+
             <!-- ページネーション -->
             <div class="top-pagination">
               <?php
@@ -106,9 +103,9 @@
             </div>
           </div>
         </div>
-
+    
         <!-- サイドバー -->
-        <aside class="archive-layout__sidebar sidebar">
+        <aside class="blog-layout__sidebar sidebar">
           <div class="sidebar__section category">
             <p class="category__title">実績</p>
             <ul class="category__list">
@@ -116,33 +113,31 @@
             <?php
               $terms = get_terms([
                 // 表示するタクソノミースラッグを記述
-                'taxonomy' => 'cases-category',
-                'hide_empty' => true, // 未使用カテゴリを非表示にする
+                'taxonomy' => 'case-study-category',
+                'orderby' => 'slug',
+                'order'   => 'ASC',
               ]);
 
               // カスタム投稿一覧ページへのURL
-              if (is_post_type_archive('cases')) {
-                $home_link = sprintf(
-                  '<li class="category__item"><span class="is-active">全て</span></li>'
-                );
-              } else {
-                $home_link = sprintf(
-                  // カスタム投稿一覧ページへのaタグに付与するクラスを指定できる
-                  '<li class="category__item"><a href="%s">全て</a></li>',
-                  // カスタム投稿一覧ページのスラッグを指定
-                  esc_url(home_url('/cases'))
-                );
-              }
+              $home_class = (is_post_type_archive()) ? 'is-active' : '';
+              $home_link = sprintf(
+                //カスタム投稿一覧ページへのaタグに付与するクラスを指定できる
+                '<li class="category__item"><a class="%s" href="%s">全て</a></li>',
+                esc_attr($home_class),
+                // カスタム投稿一覧ページのスラッグを指定
+                esc_url(home_url('/case-study'))
+              );
               echo $home_link;
 
               // タームのリンク
               if ($terms) {
                 foreach ($terms as $term) {
                   // 現在いるページのタームのIDを取得
-                  $current_term_id = get_queried_object_id();
+                  $current_term_id = get_queried_object()->term_id;
+                  // カレントクラスに付与するクラスを指定できる
                   $term_class = ($current_term_id === $term->term_id) ? 'is-active' : '';
 
-                  if ($current_term_id === $term->term_id && ! is_post_type_archive()) {
+                  if ($current_term_id === $term->term_id) {
                     $term_link = sprintf(
                       '<li class="category__item"><span class="%s">%s</span></li>',
                       esc_attr($term_class),
@@ -170,6 +165,24 @@
   </div>
 
   <!-- Contact -->
-  <?php get_template_part('parts/contact'); ?>
+  <section class="contact">
+    <div class="contact__inner inner">
+      <div class="contact__container">
+        <hgroup class="heading heading--contact">
+          <h2 class="heading__title">Contact</h2>
+          <p class="heading__subtitle">お問い合わせ</p>
+        </hgroup>
+        <div class="contact__content">
+          <p class="contact__text">各種経営相談や勉強会開催などにも対応しております。<br>お気軽にお問合せください。</p>
+          <div class="contact__button-area">
+            <a href="tel:03-6257-2000" class="contact__button contact__button-tel">TEL.03-6257-2000</a>
+            <a href="<?php echo esc_url(home_url('/contact')); ?>" class="contact__button contact-button contact-button--large">
+              <span class="contact-button__icon"></span>お問い合わせ
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
 <?php get_footer(); ?>

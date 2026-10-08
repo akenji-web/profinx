@@ -1,15 +1,22 @@
 @use "global" as *;
 
-.js-fade__upTrigger{
+.js-fade__upTrigger,
+.js-fade-mv__trigger {
   opacity: 0;
 }
 
 .js-fade__up{
   animation-name: fadeUpAnime;
-  animation-duration: 1.0s;
+  animation-delay: 0.5s;
+  animation-duration: 1.5s;
   animation-fill-mode: forwards;
   opacity:0;
   }
+
+// MVはJSで1.5秒後に付与するため、追加の遅延は付けない
+.js-fade-mv__trigger.js-fade__up {
+  animation-delay: 0s;
+}
 
 @keyframes fadeUpAnime{
   from {

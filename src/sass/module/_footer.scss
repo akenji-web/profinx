@@ -189,6 +189,7 @@
 
 .footer__button.footer__button--recruit {
   background-color: $dark-yellow;
+  border: 1px solid $dark-yellow;
   padding: rem(15) rem(30);
   color: $white;
   font-family: $base-font-family;
@@ -196,10 +197,17 @@
   font-size: rem(18);
   line-height: 1.6;
   text-align: center;
-  transition: opacity 0.3s;
+  transition: background-color 0.3s, color 0.3s;
 
   @include mq("md") {
     width: 100%;
+  }
+}
+
+@media (any-hover: hover) {
+  .footer__button.footer__button--recruit:hover {
+    background-color: $white;
+    color: $dark-yellow;
   }
 }
 
@@ -207,12 +215,6 @@
   width: rem(30);
   height: rem(20.015);
   flex-shrink: 0;
-}
-
-@media (any-hover: hover) {
-  .footer__button:hover {
-    opacity: 0.8;
-  }
 }
 
 .footer__copyright {

@@ -9,7 +9,7 @@
   <div class="sub-mv">
     <picture class="sub-mv__image">
       <source srcset="<?php echo esc_url(get_theme_file_uri("/assets/images/sub-mv-blog_sp.webp")); ?>" media="(max-width: 600px)">
-      <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/sub-mv-blog_pc.webp")); ?>" alt="インサイトのメイン画像">
+      <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/sub-mv-blog_pc.webp")); ?>" alt="ブログのメイン画像">
     </picture>
     <!-- パンくず -->
     <div class="sub-mv__breadcrumb breadcrumb">
@@ -22,21 +22,21 @@
       </div>
     </div>
     <hgroup class="sub-mv__text-area">
-      <h1 class="sub-mv__title">インサイト</h1>
-      <p class="sub-mv__subtitle">insight</p>
+      <h1 class="sub-mv__title">ブログ</h1>
+      <p class="sub-mv__subtitle">blog</p>
     </hgroup>
   </div>
 
-  <!-- インサイト詳細 -->
-  <div class="insight-detail js-fade__upTrigger">
-    <div class="insight-detail__inner sub-inner">
-      <div class="insight-detail__container">
+  <!-- ブログ詳細 -->
+  <div class="blog-detail">
+    <div class="blog-detail__inner sub-inner">
+      <div class="blog-detail__container">
         <?php if (have_posts()) : ?>
           <?php while (have_posts()) : the_post(); ?>
-            <div class="insight-detail__head">
-              <time class="insight-detail__date" datetime="<?php the_time('c'); ?>"><?php the_time('Y.m.d'); ?></time>
-              <h1 class="insight-detail__title"><?php the_title(); ?></h1>
-              <figure class="insight-detail__image">
+            <div class="blog-detail__head">
+              <time class="blog-detail__date" datetime="<?php the_time('c'); ?>"><?php the_time('Y.m.d'); ?></time>
+              <h1 class="blog-detail__title"><?php the_title(); ?></h1>
+              <figure class="blog-detail__image">
                 <?php if (has_post_thumbnail()) : ?>
                   <img src="<?php the_post_thumbnail_url('full'); ?>" alt="<?php the_title_attribute(); ?>" loading="lazy" decoding="async">
                 <?php else : ?>
@@ -44,7 +44,7 @@
                 <?php endif ; ?>
               </figure>
             </div>
-            <div class="insight-detail__content">
+            <div class="blog-detail__content">
               <?php the_content(); ?>
             </div>
           <?php endwhile; ?>
@@ -72,6 +72,24 @@
   </div>
 
   <!-- Contact -->
-  <?php get_template_part('parts/contact'); ?>
+  <section class="contact">
+    <div class="contact__inner inner">
+      <div class="contact__container">
+        <hgroup class="heading heading--contact">
+          <h2 class="heading__title">Contact</h2>
+          <p class="heading__subtitle">お問い合わせ</p>
+        </hgroup>
+        <div class="contact__content">
+          <p class="contact__text">各種経営相談や勉強会開催などにも対応しております。<br>お気軽にお問合せください。</p>
+          <div class="contact__button-area">
+            <a href="tel:03-6257-2000" class="contact__button contact__button-tel">TEL.03-6257-2000</a>
+            <a href="<?php echo esc_url(home_url('/contact')); ?>" class="contact__button contact-button contact-button--large">
+              <span class="contact-button__icon"></span>お問い合わせ
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
 <?php get_footer(); ?>

@@ -45,13 +45,15 @@
 
 .button.button--form {
   max-width: rem(280);
+  background-color: $blue;
+  color: $white;
   transition: background-color 0.3s, color 0.3s;
 }
 
 @media (any-hover: hover) {
   .button.button--form:hover {
     opacity: 1;
-    background-color: $blue;
-    color: $white;
+    background-color: transparent;
+    color: $blue;
   }
 }

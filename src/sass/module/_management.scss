@@ -5,7 +5,7 @@
   padding: rem(130) 0;
 
   @include mq("md") {
-    padding: rem(60) 0;
+    padding: rem(58) 0 rem(60);
   }
 }
 
@@ -20,7 +20,11 @@
 }
 
 .management__container {
-  margin-top: rem(60);
+  margin-top: rem(64);
+
+  @include mq("md") {
+    margin-top: rem(60);
+  }
 }
 
 .management__list {
@@ -37,13 +41,14 @@
   background-color: $white;
   box-shadow: 0 0 rem(35) 0 rgba(50, 58, 71, 0.05);
   display: flex;
-  gap: rem(94);
+  align-items: center;
+  gap: rem(88);
   padding: rem(75) rem(63);
 
   @include mq("md") {
     flex-direction: column;
     gap: rem(24);
-    padding: rem(24);
+    padding: rem(30) rem(20) rem(10);
   }
 }
 
@@ -62,7 +67,7 @@
 .management__role {
   color: $gray;
   font-size: rem(14);
-  font-family: $base-font-family;
+  font-family: $second-font-family;
   font-weight: $normal;
   line-height: 1;
 }
@@ -70,7 +75,7 @@
 .management__name-area {
   position: relative;
   margin-top: rem(3);
-  padding-bottom: rem(10);
+  padding-bottom: rem(11);
   display: flex;
   align-items: end;
   gap: rem(10);
@@ -91,7 +96,6 @@
 
   @include mq("md") {
     color: $white;
-    font-family: $base-font-family;
     font-size: rem(18);
     font-style: normal;
     line-height: 1.5;
@@ -139,7 +143,7 @@
 
   @include mq("md") {
     margin-top: 0;
-    max-width: rem(295);
+    max-width: none;
     position: relative;
     margin-inline: auto;
   }
@@ -173,7 +177,7 @@
   @include mq("md") {
     display: inline-block;
     color: $white;
-    font-family: $base-font-family;
+    font-family: $second-font-family;
     font-size: rem(12);
     font-style: normal;
     font-weight: $normal;
@@ -183,12 +187,69 @@
 }
 
 .management__body {
+  width: 100%;
+
+  @include mq("md") {
+    display: flex;
+    flex-direction: column;
+    gap: rem(20);
+  }
 }
 
 .management__text {
   color: $black;
   font-size: rem(16);
-  font-family: $base-font-family;
+  font-family: $second-font-family;
   font-weight: $normal;
   line-height: 1.8;
+
+  @include mq("md") {
+    padding: 0 rem(8);
+    font-size: rem(12);
+    overflow: hidden;
+    transition: max-height 0.3s, opacity 0.3s;
+  }
+}
+
+.management__body:not(.is-open) .management__text {
+  @include mq("md") {
+    max-height: calc(1em * 1.8 * 3);
+  }
+}
+
+.management__toggle {
+  @include mq("md") {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    margin-top: rem(-10);
+    padding-top: rem(22);
+    color: $blue;
+    border-top: 1px solid $line-gray;
+    font-family: $base-font-family;
+    font-size: rem(12);
+    font-weight: $normal;
+    line-height: 1.8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: rem(10);
+  }
+}
+
+.management__toggle-arrow {
+  @include mq("md") {
+    width: rem(6);
+    height: rem(6);
+    border-top: 1px solid currentColor;
+    border-right: 1px solid currentColor;
+    transform: rotate(-45deg);
+    transition: transform 0.3s;
+  }
+}
+
+.management__body:not(.is-open) .management__toggle-arrow {
+  @include mq("md") {
+    transform: rotate(135deg);
+  }
 }

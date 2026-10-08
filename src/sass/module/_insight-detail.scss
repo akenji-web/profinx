@@ -3,6 +3,11 @@
 .insight-detail {
   padding-top: rem(80);
   padding-bottom: rem(200);
+
+  @include mq("md"){
+    padding-top: rem(60);
+    padding-bottom: rem(100);
+  }
 }
 
 .insight-detail__inner {
@@ -11,6 +16,11 @@
 .insight-detail__container {
   padding-left: rem(100);
   padding-right: rem(100);
+
+  @include mq("md"){
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 .insight-detail__date {
@@ -20,6 +30,10 @@
   font-style: normal;
   font-weight: $normal;
   line-height: 1.286; /* 128.571% */
+
+  @include mq("md"){
+    font-size: rem(12);
+  }
 }
 
 .insight-detail__title {
@@ -71,6 +85,12 @@
   font-style: normal;
   font-weight: $medium;
   line-height: 1.500;
+
+  @include mq("md"){
+    margin-top: rem(28);
+    margin-bottom: rem(8);
+    font-size: rem(20);
+  }
 }
 
 .insight-detail__content h3 {
@@ -84,6 +104,12 @@
   font-style: normal;
   font-weight: $medium;
   line-height: 1.500;
+
+  @include mq("md"){
+    margin-top: rem(24);
+    margin-bottom: rem(8);
+    font-size: rem(18);
+  }
 }
 
 .insight-detail__content p {
@@ -94,6 +120,11 @@
   font-style: normal;
   font-weight: $normal;
   line-height: 1.500; /* 150% */
+
+  @include mq("md"){
+    margin-top: rem(20);
+    font-size: rem(14);
+  }
 }
 
 .insight-detail__content figure {
@@ -102,7 +133,7 @@
   width: 100%;
 
   @include mq("md"){
-    margin-top: rem(24);
+    margin-top: rem(20);
   }
 }
 
@@ -110,7 +141,7 @@
   margin-top: rem(24);
 
   @include mq("md"){
-    margin-top: rem(24);
+    margin-top: rem(20);
   }
 }
 
@@ -130,6 +161,10 @@
   font-style: normal;
   font-weight: $normal;
   line-height: 1.500; /* 150% */
+
+  @include mq("md"){
+    font-size: rem(14);
+  }
 }
 
 .insight-detail__content li::before {
@@ -143,6 +178,11 @@
   transform: translateY(-50%);
   width: rem(10);
   height: rem(10);
+
+  @include mq("md"){
+    width: rem(8);
+    height: rem(8);
+  }
 }
 
 .insight-detail__content a.wp-block-button__link {
@@ -160,6 +200,10 @@
   line-height: 1.500;
   text-decoration: none;
   transition: opacity 0.3s;
+
+  @include mq("md"){
+    font-size: rem(14);
+  }
 }
 
 @media (any-hover: hover) {

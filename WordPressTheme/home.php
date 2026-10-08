@@ -28,7 +28,7 @@
   </div>
 
   <!-- ニュース一覧 -->
-  <div id="archive-news" class="archive-layout">
+  <div id="archive-news" class="archive-layout js-fade__upTrigger">
     <div class="inner archive-layout__inner">
       <div class="archive-layout__container">
         <div class="archive-layout__main">
@@ -87,22 +87,23 @@
         <!-- サイドバー -->
         <aside class="archive-layout__sidebar sidebar">
           <div class="sidebar__section category">
-            <p class="category__title">カテゴリー</p>
+            <p class="category__title">カテゴリ</p>
             <ul class="category__list">
             <?php
               $terms = get_terms([
                 'taxonomy' => 'category',
-                'orderby'  => 'slug',
-                'order'    => 'ASC',
+                'hide_empty' => true, // 未使用カテゴリを非表示にする
               ]);
 
               // ニュース一覧ページへのURL
-              $home_class = is_home() ? 'is-active' : '';
-              $home_link = sprintf(
-                '<li class="category__item"><a class="%s" href="%s">全て</a></li>',
-                esc_attr($home_class),
-                esc_url(home_url('/news'))
-              );
+              if (is_home()) {
+                $home_link = '<li class="category__item"><span class="is-active">全て</span></li>';
+              } else {
+                $home_link = sprintf(
+                  '<li class="category__item"><a href="%s">全て</a></li>',
+                  esc_url(home_url('/news'))
+                );
+              }
               echo $home_link;
 
               // タームのリンク
@@ -126,24 +127,6 @@
   </div>
 
   <!-- Contact -->
-  <section class="contact">
-    <div class="contact__inner inner">
-      <div class="contact__container">
-        <hgroup class="heading heading--contact">
-          <h2 class="heading__title">Contact</h2>
-          <p class="heading__subtitle">お問い合わせ</p>
-        </hgroup>
-        <div class="contact__content">
-          <p class="contact__text">各種経営相談や勉強会開催などにも対応しております。<br>お気軽にお問合せください。</p>
-          <div class="contact__button-area">
-            <a href="tel:03-6257-2000" class="contact__button contact__button-tel">TEL.03-6257-2000</a>
-            <a href="<?php echo esc_url(home_url('/contact')); ?>" class="contact__button contact-button contact-button--large">
-              <span class="contact-button__icon"></span>お問い合わせ
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <?php get_template_part('parts/contact'); ?>
 </main>
 <?php get_footer(); ?>

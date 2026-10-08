@@ -5,12 +5,15 @@
     <div class="mv__inner">
       <picture class="mv__image">
         <source media="(max-width: 600px)" srcset="<?php echo esc_url(get_theme_file_uri("/assets/images/mv_sp.webp")); ?>">
-        <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/mv_pc.webp")); ?>" alt="">
+        <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/mv_pc.webp")); ?>" alt="メイン画像">
       </picture>
       <div class="mv__text-area">
-        <p class="mv__text js-mv-text">ProFinX Co.は<br>
+        <p class="mv__text js-fade-mv__trigger">ProFinX Co.は<br>
         企業価値向上<span class="mv__text-small">を</span>支<span class="mv__text-small">える</span><br>
         経営参謀<span class="mv__text-small">です。</span></p>
+        <!-- <p class="mv__text js-fade-mv__trigger">ProFinX Co.は</p>
+        <p class="mv__text js-fade-mv__trigger">企業価値向上<span class="mv__text-small">を</span>支<span class="mv__text-small">える</span></p>
+        <p class="mv__text js-fade-mv__trigger">経営参謀<span class="mv__text-small">です</span></p> -->
       </div>
     </div>
   </div>
@@ -20,14 +23,8 @@
     <div class="about__inner inner">
       <div class="about__container">
         <div class="about__contents">
-          <h2 class="about__heading">ProFinX Co.とは</h2>
+          <h2 class="about__heading">ProFinX Co.<span>とは</span></h2>
           <div class="about__text-area">
-            <!-- <p class="about__text">私たちの会社名は、<br>
-            Pro（前へ進める/プロフェッショナル）<br>
-            ＋Fin（金融/財務企画）<br>
-            ＋X（トランスフォーメーション/変革）を組み合わせた造語です。</p>
-            <p class="about__text">そこに込めた想いと企業理念は、 「高度な専門性を備えた経営人材チームの提供」と「データ経営の導入支援」を通じて、CFOと経営企画機能を強化し、日本企業の企業価値向上に貢献すること。</p>
-            <p class="about__text">これを推進する私たちのチームは、公認会計士、外資系証券アナリスト、上場企業の経営企画担当、サステナビリティ経営の実務担当など多様なバックグランドを備えており、CXOレベルでの目線で、クライアント企業の「変革」に高い熱量でコミットします。</p> -->
             <p class="about__text"><?php echo nl2br(get_field('about_text')); ?></p>
           </div>
           <div class="about__button">
@@ -38,6 +35,106 @@
           <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/about-image.webp")); ?>" alt="経営戦略、マネジメント、エクイティ戦略のベン図" loading="lazy" decoding="async">
         </figure>
       </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="services">
+    <div class="services__inner inner">
+      <hgroup class="services__heading heading js-fade__upTrigger">
+        <h2 class="heading__title">services</h2>
+        <p class="heading__subtitle">コンサルティングメニュー</p>
+      </hgroup>
+      <ul class="services__list js-fade__upTrigger">
+        <li class="services__item">
+          <a href="<?php echo esc_url(home_url('/diagnosis')); ?>" class="services__card services-card">
+            <div class="services-card__icon">
+              <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/services-card-icon01.webp")); ?>" alt="" loading="lazy" decoding="async">
+            </div>
+            <p class="services-card__title">経営診断・企業価値向上<br>プログラム</p>
+            <div class="services-card__arrow">
+              <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/service-card-arrow.svg")); ?>" alt="" loading="lazy" decoding="async">
+            </div>
+          </a>
+        </li>
+        <li class="services__item">
+          <a href="<?php echo esc_url(home_url('/mid-term-plan')); ?>" class="services__card services-card">
+            <div class="services-card__icon">
+              <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/services-card-icon02.webp")); ?>" alt="" loading="lazy" decoding="async">
+            </div>
+            <p class="services-card__title">中期経営計画策定</p>
+            <div class="services-card__arrow">
+              <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/service-card-arrow.svg")); ?>" alt="" loading="lazy" decoding="async">
+            </div>
+          </a>
+        </li>
+        <li class="services__item">
+          <a href="<?php echo esc_url(home_url('/ma-strategy')); ?>" class="services__card services-card">
+            <div class="services-card__icon">
+              <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/services-card-icon03.webp")); ?>" alt="" loading="lazy" decoding="async">
+            </div>
+            <p class="services-card__title">M&A戦略・組織再編</p>
+            <div class="services-card__arrow">
+              <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/service-card-arrow.svg")); ?>" alt="" loading="lazy" decoding="async">
+            </div>
+          </a>
+        </li>
+        <li class="services__item">
+          <a href="<?php echo esc_url(home_url('/bdd-pmi')); ?>" class="services__card services-card">
+            <div class="services-card__icon">
+              <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/services-card-icon04.webp")); ?>" alt="" loading="lazy" decoding="async">
+            </div>
+            <p class="services-card__title">各種デューディリ<br>ジェンス・PMI</p>
+            <div class="services-card__arrow">
+              <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/service-card-arrow.svg")); ?>" alt="" loading="lazy" decoding="async">
+            </div>
+          </a>
+        </li>
+        <li class="services__item">
+          <a href="<?php echo esc_url(home_url('/biz-dev')); ?>" class="services__card services-card">
+            <div class="services-card__icon">
+              <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/services-card-icon05.webp")); ?>" alt="" loading="lazy" decoding="async">
+            </div>
+            <p class="services-card__title">新規事業開発</p>
+            <div class="services-card__arrow">
+              <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/service-card-arrow.svg")); ?>" alt="" loading="lazy" decoding="async">
+            </div>
+          </a>
+        </li>
+        <li class="services__item">
+          <a href="<?php echo esc_url(home_url('/human-capital')); ?>" class="services__card services-card">
+            <div class="services-card__icon">
+              <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/services-card-icon06.webp")); ?>" alt="" loading="lazy" decoding="async">
+            </div>
+            <p class="services-card__title">人的資本経営・組織開発</p>
+            <div class="services-card__arrow">
+              <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/service-card-arrow.svg")); ?>" alt="" loading="lazy" decoding="async">
+            </div>
+          </a>
+        </li>
+        <li class="services__item">
+          <a href="<?php echo esc_url(home_url('/governance')); ?>" class="services__card services-card">
+            <div class="services-card__icon">
+              <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/services-card-icon07.webp")); ?>" alt="" loading="lazy" decoding="async">
+            </div>
+            <p class="services-card__title">経営管理体制高度化</p>
+            <div class="services-card__arrow">
+              <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/service-card-arrow.svg")); ?>" alt="" loading="lazy" decoding="async">
+            </div>
+          </a>
+        </li>
+        <li class="services__item">
+          <a href="<?php echo esc_url(home_url('/equity-advisory')); ?>" class="services__card services-card">
+            <div class="services-card__icon">
+              <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/services-card-icon08.webp")); ?>" alt="" loading="lazy" decoding="async">
+            </div>
+            <p class="services-card__title">エクイティアドバイザリー</p>
+            <div class="services-card__arrow">
+              <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/service-card-arrow.svg")); ?>" alt="" loading="lazy" decoding="async">
+            </div>
+          </a>
+        </li>
+      </ul>
     </div>
   </section>
 
@@ -54,32 +151,6 @@
         </figure>
         <div class="value-proposition__contents">
           <ul class="value-proposition__list">
-            <!-- <li class="value-proposition__item">
-              <div class="value-proposition__item-header">
-                <span class="value-proposition__number">01</span>
-                <h3 class="value-proposition__item-title">経営者視点の提案力</h3>
-              </div>
-              <p class="value-proposition__item-text">経営戦略にかかる全アジェンダ（組織ガバナンス/事業戦略/財務税務/ファイナンス/人事/IT/マーケティング/M＆A/IR/株主対応）に精通した経験豊富なコンサルタントが企業価値向上施策を客観的立場から直言し、経営意思決定を後押しします。</p>
-            </li>
-            <li class="value-proposition__item">
-              <div class="value-proposition__item-header">
-                <span class="value-proposition__number">02</span>
-                <h3 class="value-proposition__item-title">「腹落ち」を作る経営判断・推進のハブ</h3>
-              </div>
-              <p class="value-proposition__item-text">
-                "第三者のハブ"として組織のしがらみを解消し、トップの「腹落ち」を醸成し、膨大な工数を厭わない熱量で、経営陣の円滑なコミュニケーションと企業価値向上を実現します。
-              </p>
-            </li>
-            <li class="value-proposition__item">
-              <div class="value-proposition__item-header">
-                <span class="value-proposition__number">03</span>
-                <h3 class="value-proposition__item-title">最高品質のデータ分析/基盤構築力</h3>
-              </div>
-              <p class="value-proposition__item-text">
-                社内に点在・潜在するデータを収集・統合し、高速かつ高度なデータ分析により、経営課題の把握と解決に向けたインサイト（示唆）を導出します。<br>
-                インサイトを“使いこなす”ため、データ基盤、ダッシュボード、管理帳票の策定と運用までワンストップで支援します。
-              </p>
-            </li> -->
             <li class="value-proposition__item">
               <div class="value-proposition__item-header">
                 <span class="value-proposition__number">01</span>
@@ -107,111 +178,11 @@
     </div>
   </section>
 
-  <!-- Services -->
-  <section class="services">
-    <div class="services__inner inner">
-      <hgroup class="services__heading heading heading--left js-fade__upTrigger">
-        <h2 class="heading__title">services</h2>
-        <p class="heading__subtitle">コンサルティングメニュー</p>
-      </hgroup>
-      <ul class="services__list js-fade__upTrigger">
-        <li class="services__item">
-          <a href="#" class="services__card services-card">
-            <div class="services-card__icon">
-              <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/services-card-icon01.webp")); ?>" alt="">
-            </div>
-            <p class="services-card__title">現状分析・経営診断</p>
-            <div class="services-card__arrow">
-              <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/service-card-arrow.svg")); ?>" alt="">
-            </div>
-          </a>
-        </li>
-        <li class="services__item">
-          <a href="#" class="services__card services-card">
-            <div class="services-card__icon">
-              <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/services-card-icon02.webp")); ?>" alt="">
-            </div>
-            <p class="services-card__title">中期経営計画・戦略策定</p>
-            <div class="services-card__arrow">
-              <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/service-card-arrow.svg")); ?>" alt="">
-            </div>
-          </a>
-        </li>
-        <li class="services__item">
-          <a href="#" class="services__card services-card">
-            <div class="services-card__icon">
-              <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/services-card-icon03.webp")); ?>" alt="">
-            </div>
-            <p class="services-card__title">M&A戦略・組織再編</p>
-            <div class="services-card__arrow">
-              <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/service-card-arrow.svg")); ?>" alt="">
-            </div>
-          </a>
-        </li>
-        <li class="services__item">
-          <a href="#" class="services__card services-card">
-            <div class="services-card__icon">
-              <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/services-card-icon04.webp")); ?>" alt="">
-            </div>
-            <p class="services-card__title">BDD・PMI</p>
-            <div class="services-card__arrow">
-              <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/service-card-arrow.svg")); ?>" alt="">
-            </div>
-          </a>
-        </li>
-        <li class="services__item">
-          <a href="#" class="services__card services-card">
-            <div class="services-card__icon">
-              <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/services-card-icon05.webp")); ?>" alt="">
-            </div>
-            <p class="services-card__title">新規事業開発</p>
-            <div class="services-card__arrow">
-              <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/service-card-arrow.svg")); ?>" alt="">
-            </div>
-          </a>
-        </li>
-        <li class="services__item">
-          <a href="#" class="services__card services-card">
-            <div class="services-card__icon">
-              <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/services-card-icon06.webp")); ?>" alt="">
-            </div>
-            <p class="services-card__title">人的資本経営・組織開発</p>
-            <div class="services-card__arrow">
-              <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/service-card-arrow.svg")); ?>" alt="">
-            </div>
-          </a>
-        </li>
-        <li class="services__item">
-          <a href="#" class="services__card services-card">
-            <div class="services-card__icon">
-              <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/services-card-icon07.webp")); ?>" alt="">
-            </div>
-            <p class="services-card__title">経営管理体制高度化</p>
-            <div class="services-card__arrow">
-              <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/service-card-arrow.svg")); ?>" alt="">
-            </div>
-          </a>
-        </li>
-        <li class="services__item">
-          <a href="#" class="services__card services-card">
-            <div class="services-card__icon">
-              <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/services-card-icon08.webp")); ?>" alt="">
-            </div>
-            <p class="services-card__title">IR/SR・<br>エクイティアドバイザリー</p>
-            <div class="services-card__arrow">
-              <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/service-card-arrow.svg")); ?>" alt="">
-            </div>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </section>
-
   <!-- Cases -->
   <section class="cases">
     <div class="cases__inner inner">
-      <div class="cases__head">
-        <hgroup class="heading heading--left cases__title js-fade__upTrigger">
+      <div class="cases__head js-fade__upTrigger">
+        <hgroup class="heading heading--left cases__title">
           <h2 class="heading__title">cases</h2>
           <p class="heading__subtitle">実績紹介</p>
         </hgroup>
@@ -233,7 +204,7 @@
           ?>
           <li class="cases__item case-card">
             <p class="case-card__title"><?php the_title(); ?></p>
-            <p class="case-card__description"><?php echo esc_html(get_field('description') ?: '〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇'); ?></p>
+            <div class="case-card__description"><?php the_content(); ?></div>
             <div class="case-card__bottom">
               <div class="case-card__categories">
               <?php
@@ -312,24 +283,6 @@
   </section>
 
   <!-- Contact -->
-  <section class="contact">
-    <div class="contact__inner inner">
-      <div class="contact__container">
-        <hgroup class="heading heading--contact js-fade__upTrigger">
-          <h2 class="heading__title">Contact</h2>
-          <p class="heading__subtitle">お問い合わせ</p>
-        </hgroup>
-        <div class="contact__content">
-          <p class="contact__text js-fade__upTrigger">各種経営相談や勉強会開催などにも対応しております。<br>お気軽にお問合せください。</p>
-          <div class="contact__button-area js-fade__upTrigger">
-            <a href="tel:03-6257-2000" class="contact__button contact__button-tel">TEL.03-6257-2000</a>
-            <a href="<?php echo esc_url(home_url('/contact')); ?>" class="contact__button contact-button contact-button--large">
-              <span class="contact-button__icon"></span>お問い合わせ
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <?php get_template_part('parts/contact'); ?>
 </main>
 <?php get_footer(); ?>

@@ -23,8 +23,8 @@
   position: relative;
   padding-bottom: rem(10);
   color: $blue;
-  font-size: rem(36);
-  font-family: $second-font-family;
+  font-size: rem(50);
+  font-family: "EB Garamond", serif;
   font-weight: $medium;
   line-height: 1.5;
   letter-spacing: rem(1.8);
@@ -33,6 +33,10 @@
     font-size: rem(32);
     letter-spacing: rem(1.6);
   }
+}
+
+.about__heading span {
+  font-family: $second-font-family;
 }
 
 .about__heading::before {

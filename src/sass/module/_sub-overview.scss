@@ -1,0 +1,73 @@
+@use "global" as *;
+
+// Overview
+.sub-overview {
+  position: relative;
+  padding-top: rem(180);
+  padding-bottom: rem(130);
+  background-color: $bg-gray;
+
+  @include mq("md") {
+    padding-top: rem(98);
+    padding-bottom: rem(60);
+  }
+}
+
+.sub-overview.sub-overview--no-image {
+  padding-top: rem(130);
+
+  @include mq("md") {
+    padding-top: rem(60);
+  }
+}
+
+.sub-overview__anchor-nav {
+  position: absolute;
+  top: rem(-58);
+  left: 0;
+  right: 0;
+
+  @include mq("md") {
+    top: rem(-56);
+  }
+}
+
+.sub-overview__inner {
+}
+
+.sub-overview__heading {
+}
+
+.sub-overview__lead {
+  margin-top: rem(24);
+  color: $black;
+  font-family: $base-font-family;
+  font-size: rem(16);
+  font-weight: $normal;
+  line-height: 1.8;
+  text-align: center;
+
+  @include mq("md") {
+    margin-top: rem(40);
+    font-size: rem(14);
+    line-height: 1.8;
+  }
+}
+
+.sub-overview__diagram {
+  margin-top: rem(40);
+
+  @include mq("md") {
+    margin-top: rem(24);
+    margin-inline: calc(50% - 50vw);
+  }
+}
+
+.sub-overview__diagram img {
+  width: 100%;
+  max-width: rem(1080);
+  aspect-ratio: 1080 / 561;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}

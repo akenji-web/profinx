@@ -25,7 +25,7 @@
 	<header class="header js-header">
     <div class="header__inner">
       <a href="<?php echo esc_url(home_url('/')); ?>" class="header__logo">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.webp" alt="ProFinX">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.webp" alt="ProFinX Co.のロゴ">
       </a>
       <nav class="header__nav u-desktop" aria-label="グローバルナビゲーション">
         <ul class="header__nav-list">

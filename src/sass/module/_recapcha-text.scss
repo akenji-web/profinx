@@ -1,0 +1,16 @@
+@use "global" as *;
+
+.recapcha-text {
+  margin-top: rem(20);
+  font-size: rem(14);
+  font-family: $base-font-family;
+  font-weight: $normal;
+  line-height: 1.5;
+  text-align: center;
+  color: $black;
+}
+
+/*reCAPTHAマーク非表示設定*/
+.grecaptcha-badge {
+  visibility: hidden;
+}

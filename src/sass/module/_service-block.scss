@@ -1,0 +1,96 @@
+@use "global" as *;
+
+.service-block {
+  padding: rem(50) rem(70) rem(40);
+  background-color: $white;
+  box-shadow: 0 0 rem(35) 0 rgba(50, 58, 71, 0.05);
+
+  @include mq("md") {
+    padding: rem(10) 0 rem(40);
+    width: 100%;
+  }
+}
+
+.service-block:not(:first-child) {
+  margin-top: rem(60);
+
+  @include mq("md") {
+    margin-top: rem(40);
+  }
+}
+
+.service-block__title {
+  position: relative;
+  width: fit-content;
+  margin-inline: auto;
+  color: $blue;
+  font-family: $second-font-family;
+  font-size: rem(24);
+  font-weight: $bold;
+  line-height: 1.5;
+  text-align: center;
+  padding-inline: rem(150);
+
+  @include mq("md") {
+    font-size: rem(22);
+    letter-spacing: -0.06em;
+    padding-inline: rem(48);
+  }
+}
+
+.service-block__title::before,
+.service-block__title::after {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: block;
+  content: "";
+  background-color: $blue;
+  width: rem(126);
+  max-width: 100%;
+  height: rem(1);
+
+  @include mq("md") {
+    width: rem(40);
+  }
+}
+
+.service-block__title::before {
+  left: 0;
+}
+
+.service-block__title::after {
+  right: 0;
+}
+
+.service-block__lead {
+  margin-top: rem(42);
+  color: $black;
+  font-family: $second-font-family;
+  font-size: rem(16);
+  font-weight: $medium;
+  line-height: 1.5;
+  text-align: center;
+
+  @include mq("md") {
+    padding-right: rem(32);
+    padding-left: rem(32);
+    font-size: rem(14);
+  }
+}
+
+.service-block__cards {
+  margin-top: rem(32);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: rem(30);
+
+  @include mq("md") {
+    margin-top: rem(32);
+    grid-template-columns: 1fr;
+    gap: rem(24);
+    justify-items: center;
+    padding-right: rem(24);
+    padding-left: rem(24);
+  }
+}

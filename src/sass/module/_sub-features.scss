@@ -1,0 +1,35 @@
+@use "global" as *;
+
+// Features
+.sub-features {
+  padding-top: rem(130);
+  padding-bottom: rem(230);
+  background-color: $white;
+
+  @include mq("md") {
+    padding-top: rem(60);
+    padding-bottom: rem(135);
+  }
+}
+
+.sub-features__inner {
+}
+
+.sub-features__heading {
+}
+
+.sub-features__list {
+  margin-top: rem(60);
+
+  @include mq("md") {
+    margin-top: rem(40);
+  }
+}
+
+.sub-features__item:not(:first-child) {
+  margin-top: rem(80);
+
+  @include mq("md") {
+    margin-top: rem(40);
+  }
+}

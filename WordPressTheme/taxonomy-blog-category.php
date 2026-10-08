@@ -3,8 +3,8 @@
   <!-- メインビュー -->
   <div class="sub-mv">
     <picture class="sub-mv__image">
-      <source srcset="<?php echo esc_url(get_theme_file_uri("/assets/images/sub-mv-blog_sp.webp")); ?>" media="(max-width: 767px)">
-      <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/sub-mv-blog_pc.webp")); ?>" alt="インサイトのメイン画像">
+      <source srcset="<?php echo esc_url(get_theme_file_uri("/assets/images/sub-mv-blog_sp.jpg")); ?>" media="(max-width: 767px)">
+      <img src="<?php echo esc_url(get_theme_file_uri("/assets/images/sub-mv-blog_pc.webp")); ?>" alt="ブログのメイン画像">
     </picture>
     <!-- パンくず -->
     <div class="sub-mv__breadcrumb breadcrumb">
@@ -17,45 +17,45 @@
       </div>
     </div>
     <hgroup class="sub-mv__text-area">
-      <h1 class="sub-mv__title">インサイト</h1>
-      <p class="sub-mv__subtitle">insight</p>
+      <h1 class="sub-mv__title">ブログ</h1>
+      <p class="sub-mv__subtitle">blog</p>
     </hgroup>
   </div>
 
-  <!-- インサイト一覧 -->
-  <div id="archive-insight" class="archive-layout js-fade__upTrigger">
-    <div class="inner archive-layout__inner">
-      <div class="archive-layout__container">
-        <div class="archive-layout__main archive-insight">
+  <!-- ブログ一覧 -->
+  <div id="archive-blog" class="blog-layout">
+    <div class="inner blog-layout__inner">
+      <div class="blog-layout__container">
+        <div class="blog-layout__main archive-blog">
           <?php
             // 現在いるページのクエリ対象オブジェクトを取得
             $queried_object = get_queried_object();
             $current_term_id = is_a($queried_object, 'WP_Term') ? $queried_object->term_id : 0;
             $current_heading = (is_a($queried_object, 'WP_Term') && ! empty($queried_object->name))
               ? $queried_object->name
-              : 'インサイト一覧';
+              : 'ブログ一覧';
           ?>
-          <h2 class="archive-insight__heading sub-heading"><?php echo esc_html($current_heading); ?></h2>
-          <div class="archive-insight__container">
-            <div class="archive-insight__cards insight-cards">
+          <h2 class="archive-blog__heading sub-heading"><?php echo esc_html($current_heading); ?></h2>
+          <div class="archive-blog__container">
+            <div class="archive-blog__cards blog-cards">
               <?php if (have_posts()) : ?>
                 <?php while (have_posts()) : the_post(); ?>
-                <a href="<?php the_permalink(); ?>" class="insight-cards__item insight-card">
+                <a href="<?php the_permalink(); ?>" class="blog-cards__item blog-card">
                   <?php if (has_post_thumbnail()) : ?>
-                    <img class="insight-card__image" src="<?php the_post_thumbnail_url('full'); ?>" alt="<?php the_title_attribute(); ?>" loading="lazy" decoding="async">
+                    <img class="blog-card__image" src="<?php the_post_thumbnail_url('full'); ?>" alt="<?php the_title_attribute(); ?>" loading="lazy" decoding="async">
                   <?php else : ?>
-                    <img class="insight-card__image" src="<?php echo esc_url(get_theme_file_uri( "/assets/images/noimage.jpg" )); ?>)" alt="NoImage画像" />
+                    <img class="blog-card__image" src="<?php echo esc_url(get_theme_file_uri( "/assets/images/noimage.jpg" )); ?>)" alt="NoImage画像" />
                   <?php endif; ?>
-                  <div class="insight-card__content">
-                    <p class="insight-card__title"><?php the_title(); ?></p>
-                    <div class="insight-card__bottom">
-                      <time class="insight-card__date" datetime="<?php the_time('c'); ?>"><?php the_time('Y.m.d'); ?></time>
-                      <div class="insight-card__categories">
+                  <div class="blog-card__content">
+                    <p class="blog-card__title"><?php the_title(); ?></p>
+                    <div class="blog-card__bottom">
+                      <time class="blog-card__date" datetime="<?php the_time('c'); ?>"><?php the_time('Y.m.d'); ?></time>
+                      <div class="blog-card__categories">
                       <?php
-                      $taxonomy_terms = get_the_terms($post->ID, 'insight-category');
+                      $taxonomy_terms = get_the_terms($post->ID, 'blog-category');
                       if ( ! empty( $taxonomy_terms ) ) {
                         foreach( $taxonomy_terms as $taxonomy_term ) {
-                          echo '<p class="insight-card__category">' . esc_html( $taxonomy_term->name ) . '</p>';
+                          echo '<p class="blog-card__category">' . esc_html( $taxonomy_term->name ) . '</p>';
                         }
                       }
                       ?>
@@ -67,7 +67,7 @@
               <?php else : ?>
                 <p>記事が投稿されていません</p>
               <?php endif; ?>
-            </div><!-- insight-cards -->
+            </div><!-- blog-cards -->
 
             <!-- ページネーション -->
             <div class="top-pagination">
@@ -81,16 +81,17 @@
         </div>
     
         <!-- サイドバー -->
-        <aside class="archive-layout__sidebar sidebar">
+        <aside class="blog-layout__sidebar sidebar">
           <div class="sidebar__section category">
-            <p class="category__title">カテゴリ</p>
+            <p class="category__title">カテゴリー</p>
             <ul class="category__list">
 
             <?php
               $terms = get_terms([
                 // 表示するタクソノミースラッグを記述
-                'taxonomy' => 'insight-category',
-                'hide_empty' => true, // 未使用カテゴリを非表示にする
+                'taxonomy' => 'blog-category',
+                'orderby' => 'slug',
+                'order'   => 'ASC',
               ]);
 
               // カスタム投稿一覧ページへのURL
@@ -100,7 +101,7 @@
                 '<li class="category__item"><a class="%s" href="%s">全て</a></li>',
                 esc_attr($home_class),
                 // カスタム投稿一覧ページのスラッグを指定
-                esc_url(home_url('/insight'))
+                esc_url(home_url('/blog'))
               );
               echo $home_link;
 
@@ -140,6 +141,24 @@
   </div>
 
   <!-- Contact -->
-  <?php get_template_part('parts/contact'); ?>
+  <section class="contact">
+    <div class="contact__inner inner">
+      <div class="contact__container">
+        <hgroup class="heading heading--contact">
+          <h2 class="heading__title">Contact</h2>
+          <p class="heading__subtitle">お問い合わせ</p>
+        </hgroup>
+        <div class="contact__content">
+          <p class="contact__text">各種経営相談や勉強会開催などにも対応しております。<br>お気軽にお問合せください。</p>
+          <div class="contact__button-area">
+            <a href="tel:03-6257-2000" class="contact__button contact__button-tel">TEL.03-6257-2000</a>
+            <a href="<?php echo esc_url(home_url('/contact')); ?>" class="contact__button contact-button contact-button--large">
+              <span class="contact-button__icon"></span>お問い合わせ
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
 <?php get_footer(); ?>

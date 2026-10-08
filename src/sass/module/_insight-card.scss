@@ -35,7 +35,7 @@
   margin-top: auto;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: end;
 }
 
 .insight-card__date {
@@ -51,6 +51,7 @@
   column-gap: rem(6);
   row-gap: rem(4);
   flex-wrap: wrap;
+  justify-content: end;
 }
 
 .insight-card__category {

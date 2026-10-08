@@ -54,7 +54,7 @@
   </div>
 
   <!-- 実績紹介 -->
-  <div id="archive-case" class="archive-layout">
+  <div id="archive-case" class="archive-layout js-fade__upTrigger">
     <div class="inner archive-layout__inner">
       <div class="archive-layout__container">
         <div class="archive-layout__main archive-case">
@@ -73,7 +73,7 @@
                 <?php while (have_posts()) : the_post(); ?>
                 <div class="case-cards__item case-card">
                   <p class="case-card__title"><?php the_title(); ?></p>
-                  <p class="case-card__description"><?php the_field('description'); ?></p>
+                  <div class="case-card__description"><?php the_content(); ?></div>
                   <div class="case-card__bottom">
                     <div class="case-card__categories">
                     <?php
@@ -117,8 +117,7 @@
               $terms = get_terms([
                 // 表示するタクソノミースラッグを記述
                 'taxonomy' => 'cases-category',
-                'orderby' => 'slug',
-                'order'   => 'ASC',
+                'hide_empty' => true, // 未使用カテゴリを非表示にする
               ]);
 
               // カスタム投稿一覧ページへのURL
@@ -168,24 +167,6 @@
   </div>
 
   <!-- Contact -->
-  <section class="contact">
-    <div class="contact__inner inner">
-      <div class="contact__container">
-        <hgroup class="heading heading--contact">
-          <h2 class="heading__title">Contact</h2>
-          <p class="heading__subtitle">お問い合わせ</p>
-        </hgroup>
-        <div class="contact__content">
-          <p class="contact__text">各種経営相談や勉強会開催などにも対応しております。<br>お気軽にお問合せください。</p>
-          <div class="contact__button-area">
-            <a href="tel:03-6257-2000" class="contact__button contact__button-tel">TEL.03-6257-2000</a>
-            <a href="<?php echo esc_url(home_url('/contact')); ?>" class="contact__button contact-button contact-button--large">
-              <span class="contact-button__icon"></span>お問い合わせ
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <?php get_template_part('parts/contact'); ?>
 </main>
 <?php get_footer(); ?>

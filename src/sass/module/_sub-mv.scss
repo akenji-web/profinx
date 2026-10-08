@@ -29,7 +29,7 @@
   top: 50%;
   transform: translateY(-50%);
   left: rem(120);
-  width: max-content;
+  width: fit-content;
 
   @include mq("md") {
     left: rem(60);
@@ -79,11 +79,11 @@
 
 .sub-mv__anchor-nav {
   position: absolute;
-  bottom: rem(-58);
+  bottom: rem(-48);
   left: 0;
   right: 0;
 
   @include mq("md") {
-    bottom: rem(-162);
+    bottom: rem(-55);
   }
 }

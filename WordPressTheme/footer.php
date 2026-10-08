@@ -3,17 +3,17 @@
       <div class="footer__container">
         <div class="footer__left">
           <a href="<?php echo esc_url(home_url('/')); ?>" class="footer__logo">
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/logo.webp" alt="ProFinX">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/logo.webp" alt="ProFinX Co.のロゴ" loading="lazy" decoding="async">
           </a>
           <div class="footer__group">
-            <h3 class="footer__group-title">グループ会社紹介</h3>
+            <p class="footer__group-title">グループ会社紹介</p>
             <div class="footer__group-logos">
               <a href="https://www.plutuscon.jp/" class="footer__group-link" target="_blank" rel="noopener noreferrer">
-                <img  class="footer__group-logo" src="<?php echo esc_url(get_theme_file_uri("/assets/images/plutus-co-logo.webp")); ?>" alt="プルータス・コンサルティング">
+                <img  class="footer__group-logo" src="<?php echo esc_url(get_theme_file_uri("/assets/images/plutus-co-logo.webp")); ?>" alt="プルータス・コンサルティング" loading="lazy" decoding="async">
                 <p class="footer__group-name">プルータス・コンサルティング</p>
               </a>
               <a href="https://plutusmaad.jp/" class="footer__group-link" target="_blank" rel="noopener noreferrer">
-                <img class="footer__group-logo" src="<?php echo esc_url(get_theme_file_uri("/assets/images/plutus-ma-logo.webp")); ?>" alt="プルータス・マネジメントアドバイザリー">
+                <img class="footer__group-logo" src="<?php echo esc_url(get_theme_file_uri("/assets/images/plutus-ma-logo.webp")); ?>" alt="プルータス・マネジメントアドバイザリー" loading="lazy" decoding="async">
                 <p class="footer__group-name">プルータス・マネジメントアドバイザリー</p>
               </a>
             </div>
@@ -26,7 +26,7 @@
                 <a href="<?php echo esc_url(home_url('/company')); ?>" class="footer__nav-link">企業情報</a>
               </li>
               <li class="footer__nav-item">
-                <a href="<?php echo esc_url(home_url('/services')); ?>" class="footer__nav-link">サービス</a>
+                <a href="<?php echo esc_url(home_url('/#services')); ?>" class="footer__nav-link">サービス</a>
               </li>
               <li class="footer__nav-item">
                 <a href="<?php echo esc_url(home_url('/cases')); ?>" class="footer__nav-link">実績紹介</a>

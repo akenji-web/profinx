@@ -2,12 +2,10 @@
 
 .group {
   background-color: $white;
-  border-radius: rem(40) rem(40) 0 0;
   padding: rem(130) 0 rem(230);
 
   @include mq("md") {
-    padding: rem(60) 0 rem(80);
-    border-radius: rem(24) rem(24) 0 0;
+    padding: rem(60) 0 rem(135);
   }
 }
 
@@ -22,46 +20,60 @@
   font-weight: $normal;
   line-height: 1.8;
   text-align: center;
-}
 
-.group__image {
-  width: 100%;
-  max-width: rem(600);
-  margin-inline: auto;
-}
-
-.group__image img {
-  aspect-ratio: 600 / 578;
-  height: auto;
-  width: 100%;
-  max-width: rem(600);
-  object-fit: contain;
+  @include mq("md") {
+    margin-top: rem(40);
+  }
 }
 
 .group__container {
   margin-top: rem(40);
-  padding: rem(60) rem(97);
+  padding: rem(10) rem(97) rem(60);
   background-color: $bg-gray;
+
+  @include mq("md") {
+    padding: rem(20) rem(4) rem(40);
+  }
+}
+
+.group__image {
+  width: 100%;
+  max-width: rem(705);
+  margin-inline: auto;
+}
+
+.group__image img {
+  aspect-ratio: 705 / 679;
+  height: auto;
+  width: 100%;
+  max-width: rem(705);
+  object-fit: contain;
 }
 
 .group__companies {
-  margin-top: rem(100);
+  margin-top: rem(50);
   display: flex;
   flex-direction: column;
   gap: rem(40);
+
+  @include mq("md") {
+    margin-top: rem(40);
+    gap: rem(50);
+  }
 }
 
 .group__company {
   border-bottom: 1px solid $line-gray;
-  padding-bottom: rem(40);
+  padding-bottom: rem(36);
   display: flex;
-  gap: rem(40);
+  gap: rem(36);
   align-items: flex-start;
 
   @include mq("md") {
     flex-direction: column;
     gap: rem(24);
-    padding-bottom: rem(32);
+    padding-bottom: 0;
+    border-bottom: none;
   }
 }
 
@@ -69,6 +81,10 @@
   flex-shrink: 0;
   width: 100%;
   max-width: rem(200);
+
+  @include mq("md") {
+    max-width: rem(100);
+  }
 }
 
 .group__company-header img {
@@ -89,19 +105,36 @@
   font-weight: $medium;
   line-height: 1.5;
   padding-left: rem(10);
+
+  @include mq("md") {
+    font-size: rem(16);
+    padding-left: rem(8);
+  }
 }
 
 .group__company-desc {
   margin-top: rem(10);
+  padding-left: rem(14);
   color: $black;
   font-size: rem(16);
   font-family: $base-font-family;
   font-weight: $normal;
   line-height: 1.8;
+
+  @include mq("md") {
+    padding-left: rem(10);
+    font-size: rem(14);
+  }
 }
 
 .group__company-info {
   margin-top: rem(20);
+  padding-left: rem(14);
+
+  @include mq("md") {
+    margin-top: rem(30);
+    padding-left: rem(10);
+  }
 }
 
 .group__info-row {
@@ -126,6 +159,10 @@
   font-weight: $normal;
   line-height: 1.8;
   width: rem(102);
+
+  @include mq("md") {
+    font-size: rem(14);
+  }
 }
 
 .group__info-row dt::before {
@@ -150,6 +187,10 @@
   font-weight: $normal;
   line-height: 1.8;
   margin: 0;
+
+  @include mq("md") {
+    font-size: rem(14);
+  }
 }
 
 .group__company-link {
@@ -166,6 +207,10 @@
   font-weight: $medium;
   line-height: 1.5;
   transition: opacity 0.3s;
+
+  @include mq("md") {
+    font-size: rem(14);
+  }
 }
 
 .group__company-link::after {

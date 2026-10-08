@@ -114,6 +114,7 @@ $drawer-easing: ease;
 .drawer__submenu-item a {
   display: block;
   font-size: rem(14);
+  font-family: $second-font-family;
   line-height: 1.5;
 }
 
