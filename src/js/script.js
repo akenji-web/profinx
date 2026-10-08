@@ -86,6 +86,12 @@ jQuery(function ($) { // この中であればWordpressでも「$」が使用可
     fadeAnime();
   });
 
+  // トップMV：表示から1.5秒後にふわっと表示（スクロール連動なし）
+  const MV_FADE_DELAY_MS = 1500;
+  setTimeout(function () {
+    $('.js-fade-mv__trigger').addClass('js-fade__up');
+  }, MV_FADE_DELAY_MS);
+
   const $headerSubmenuParent = $('.header__nav-item--has-submenu');
   const $headerSubmenuTrigger = $('.js-header-submenu-trigger');
   const $headerSubmenuPanel = $('#header-submenu-services');
@@ -136,15 +142,78 @@ jQuery(function ($) { // この中であればWordpressでも「$」が使用可
     }
   });
 
+  // マネジメント（SPアコーディオン）
+  const mobileMediaQuery = window.matchMedia("(max-width: 768px)");
+  const managementCollapsedHeightRem = 64.8;
+
+  function setManagementBodyState($body, isOpen) {
+    const $text = $body.find('.js-management-text');
+    const $toggle = $body.find('.js-management-toggle');
+
+    $body.toggleClass('is-open', isOpen);
+    $toggle.attr('aria-expanded', String(isOpen));
+    $toggle.find('.management__toggle-label').text(isOpen ? '閉じる' : 'もっと見る');
+    $text.css('max-height', isOpen ? `${$text.prop('scrollHeight')}px` : `${managementCollapsedHeightRem}px`);
+  }
+
+  function initManagementAccordion() {
+    const isMobile = mobileMediaQuery.matches;
+
+    $('.js-management-body').each(function () {
+      const $body = $(this);
+      const $toggle = $body.find('.js-management-toggle');
+
+      if (!isMobile) {
+        $body.addClass('is-open');
+        $toggle.attr('aria-expanded', 'true');
+        $toggle.find('.management__toggle-label').text('閉じる');
+        $body.find('.js-management-text').css('max-height', '');
+        return;
+      }
+
+      const shouldOpen = $body.hasClass('is-open');
+      setManagementBodyState($body, shouldOpen);
+    });
+  }
+
+  $(document).on('click', '.js-management-toggle', function () {
+    if (!mobileMediaQuery.matches) return;
+    const $toggle = $(this);
+    const $body = $toggle.closest('.js-management-body');
+    const isOpen = $body.hasClass('is-open');
+
+    setManagementBodyState($body, !isOpen);
+  });
+
+  $(window).on('resize', function () {
+    initManagementAccordion();
+  });
+
+  initManagementAccordion();
+
   // スムーススクロール (絶対パスのリンク先が現在のページであった場合でも作動)
 
   $(document).on('click', 'a[href*="#"]', function () {
     let time = 400;
     let header = $('header').innerHeight();
+  
+    const url = new URL(this.href);
+    const currentUrl = new URL(location.href);
+  
+    if (
+      url.origin !== currentUrl.origin ||
+      url.pathname !== currentUrl.pathname ||
+      url.search !== currentUrl.search
+    ) {
+      return true;
+    }
+  
     let target = $(this.hash);
-    if (!target.length) return;
+    if (!target.length) return true;
+  
     let targetY = target.offset().top - header;
     $('html,body').animate({ scrollTop: targetY }, time, 'swing');
+  
     return false;
   });
 
@@ -193,7 +262,7 @@ jQuery(function ($) { // この中であればWordpressでも「$」が使用可
         disableOnInteraction: false,
       },
       breakpoints: {
-        768: {
+        769: {
           slidesPerView: 6,
         },
         1440: {
